@@ -1,0 +1,15 @@
+dao/CoursDAO.class
+dao/DaoInterface.class
+dao/DaoInterface$Constants.class
+entities/StatusCours.class
+dao/LeconDAO.class
+dao/CategorieDAO.class
+entities/Chapitre.class
+entities/Cours.class
+entities/CategorieCours.class
+entities/Lecon.class
+dao/GenericDAO.class
+dao/SingletonDAO.class
+entities/MotCle.class
+dao/ChapitreDAO.class
+dao/MotCleDAO.class

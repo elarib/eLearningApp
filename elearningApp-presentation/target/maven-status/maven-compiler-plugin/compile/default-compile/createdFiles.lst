@@ -1,0 +1,4 @@
+model/AjoutChapitreModel.class
+model/AjoutLeconModel.class
+controllers/Controlleur.class
+model/MyModel.class
