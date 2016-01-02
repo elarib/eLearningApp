@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -94,6 +96,8 @@ public class Controlleur {
 	public String tousLesCours(Model model) {
 
 		model.addAttribute("tousLesCours", tousLesCours);
+		AjoutChapitreModel ajoutChapModel = new AjoutChapitreModel();
+		model.addAttribute("ajoutChapModel", ajoutChapModel);
 		return "tousLesCours";
 	}
 
@@ -151,15 +155,27 @@ public class Controlleur {
 	}
 
 	@RequestMapping(value = "/ajoutChapitre")
-	public String dbAjoutChapitre(@ModelAttribute("ajoutChapModel") @Valid AjoutChapitreModel ajoutChapModel,
-			BindingResult result, ModelMap model) {
+	public String dbAjoutChapitre(@RequestParam("cours") Long coursId,
+			@ModelAttribute("ajoutChapModel") @Valid AjoutChapitreModel ajoutChapModel, BindingResult result,
+			ModelMap model) {
 
 		if (result.hasErrors()) {
 
-			return "ajouterChapitreForm";
+			model.addAttribute("messageAjoutChapError", "le chapitre n'a pas pu être ajouté");
+
+			model.addAttribute("tousLesCours", tousLesCours);
+			AjoutChapitreModel ajoutChapModell = new AjoutChapitreModel();
+			model.addAttribute("ajoutChapModel", ajoutChapModell);
+			
+			List<FieldError> errors = result.getFieldErrors();
+			model.addAttribute("errors", errors);
+			
+			return "tousLesCours";
 		}
 
 		else {
+
+			model.addAttribute("cours_choisis", coursId);
 
 			long id = (Long) model.get("cours_choisis");
 
@@ -170,7 +186,11 @@ public class Controlleur {
 			chapitreDAO.create(chapitre);
 
 			model.addAttribute("messageAjoutChap", "chapitre ajouté avec succès");
-			return "ajouterChapitreForm";
+
+			model.addAttribute("tousLesCours", tousLesCours);
+			AjoutChapitreModel ajoutChapModell = new AjoutChapitreModel();
+			model.addAttribute("ajoutChapModel", ajoutChapModell);
+			return "tousLesCours";
 		}
 	}
 
@@ -178,6 +198,7 @@ public class Controlleur {
 	public String demandeVoirContenuCours(@RequestParam("cours") Long coursId, Model model) {
 		Cours cours = coursDAO.findById(coursId);
 		Collection<Chapitre> chapitresCours = cours.getChapitres();
+		model.addAttribute("cours", cours);
 		model.addAttribute("chapitresCours", chapitresCours);
 		return "contenuCours";
 	}
@@ -225,7 +246,7 @@ public class Controlleur {
 		model.addAttribute("leconsDuChapitre", leconsDuChapitre);
 		return "contenuChapitre";
 	}
-	
+
 	@RequestMapping(value = "/contenuLecon")
 	public String demandeVoirContenuLecon(@RequestParam("lecon") Long leconId, Model model) {
 		Lecon lecon = leconDAO.findById(leconId);

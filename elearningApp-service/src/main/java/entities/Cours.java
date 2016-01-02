@@ -62,7 +62,6 @@ public class Cours implements Serializable {
 	@NotNull
 	@Size(min = 5, max = 10)
 	private String name;
-	@Size(min = 10, max = 20)
 	private String description;
 	private Date dateAjout;
 	private String prerequis;

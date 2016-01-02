@@ -1,5 +1,5 @@
-dao/CoursDAO.class
 dao/DaoInterface.class
+dao/CoursDAO.class
 dao/DaoInterface$Constants.class
 entities/StatusCours.class
 dao/LeconDAO.class

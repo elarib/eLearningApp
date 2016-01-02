@@ -13,7 +13,7 @@
 				</tr>
 				<tr>
 					<td>Description :</td>
-					<td><f:input path="description" /></td>
+					<td><f:textarea path="description" /></td>
 					<td style="color: red;"><f:errors path="description"></f:errors></td>
 				</tr>
 				<tr>

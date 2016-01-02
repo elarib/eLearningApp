@@ -6,6 +6,8 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 public class MyModel {
 
@@ -13,7 +15,7 @@ public class MyModel {
 	@Size(min = 5, max = 10)
 	private String name;
 	@NotNull
-	@Size(min = 10, max = 20)
+	@NotEmpty
 	private String description;
 	@NotNull
 	private String categorieName;
