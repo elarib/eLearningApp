@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -76,9 +77,10 @@ public class Controlleur {
 		tousLesCours = (ArrayList<Cours>) coursDAO.findAll();
 	}
 
-	@RequestMapping(value = "/index")
-	public String index(Model model) {
-
+	@RequestMapping(value = "/index" )
+	public String index(Model model, HttpServletRequest request) {
+        
+		System.out.println(request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath());
 		return "index";
 	}
 
@@ -214,7 +216,7 @@ public class Controlleur {
 		Collection<Chapitre> chapitresCours = cours.getChapitres();
 		model.addAttribute("cours", cours);
 		model.addAttribute("chapitresCours", chapitresCours);
-		return "contenuCours";
+		return "contenuCours2";
 	}
 
 	// ajouterLeconForm
@@ -270,7 +272,7 @@ public class Controlleur {
 		
 		model.addAttribute("myModel", myModel);
 		
-		return "contenuChapitre";
+		return "contenuChapitre2";
 	}
 
 	@RequestMapping(value = "/contenuLecon")

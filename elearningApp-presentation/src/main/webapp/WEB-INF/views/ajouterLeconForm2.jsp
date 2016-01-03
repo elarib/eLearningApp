@@ -28,15 +28,13 @@
 	<div>
 		<f:form modelAttribute="ajoutLeconModel" method="post"
 			action="dbAjoutLecon">
-
-			<table>
-
-				<tr>
 					<td>Titre :</td>
 					<td><f:input path="name" /></td>
 					<td style="color: red;"><f:errors path="name"></f:errors></td>
-				</tr>
-
+				<div class="form-group">
+				    <label for="exampleInputEmail1">Titre</label>
+				    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+				</div>
 
 				<tr>
 					<td>Contenu :</td>
