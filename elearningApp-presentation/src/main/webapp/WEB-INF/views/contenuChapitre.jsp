@@ -22,14 +22,15 @@
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class=" col-md-10">
-		
-		
+
+
 			<table class="table">
 				<tr>
-					<td><h4 class="text-muted" style="font-weight: bold;">Contenu du chapitre</h4></td>
+					<td><h4 class="text-muted" style="font-weight: bold;">Contenu
+							du chapitre</h4></td>
 					<td><f:form action="AccesPageModifierChapitre">
-							<input type="submit" value="modifier le chapitre"
-								class="btn btn-warning" style="float: right;" />
+							<button type="button" class="btn btn-warning" data-toggle="modal"
+								data-target="#myModal" style="float: right;">modifier le chapitre</button>
 						</f:form></td>
 				</tr>
 			</table>
@@ -79,6 +80,55 @@
 				</tbody>
 			</table>
 		</div>
+
+
+		<!-- Modal -->
+		<div id="myModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header bg-warning">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Modification du chapitre</h4>
+					</div>
+					<div class="modal-body">
+
+						<f:form modelAttribute="myModel" method="post"
+							action="modifierChapitre">
+
+							<div class="form-group">
+								<label for="ordre">Ordre :</label>
+								<f:input path="ordreDuChapitre" id="ordre" class="form-control" />
+								<f:errors path="ordreDuChapitre"></f:errors>
+							</div>
+							<div class="form-group">
+								<label for="nom">Nom du chapitre :</label>
+								<f:input path="name" class="form-control" id="nom" />
+								<f:errors path="name"></f:errors>
+							</div>
+							<div class="form-group">
+								<label for="desc">Description :</label>
+								<f:input path="description" class="form-control" id="desc" />
+								<f:errors path="description"></f:errors>
+							</div>
+
+
+							<button type="submit" class="btn btn-primary">Modifier le
+								chapitre</button>
+
+
+						</f:form>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end modal -->
+
 
 		<div class="col-md-1"></div>
 	</div>

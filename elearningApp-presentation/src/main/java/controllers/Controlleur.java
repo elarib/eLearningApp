@@ -255,12 +255,21 @@ public class Controlleur {
 	}
 
 	@RequestMapping(value = "/contenuChapitre")
-	public String demandeVoirContenuChapitre(@RequestParam("chapitre") Long chapId, Model model) {
+	public String demandeVoirContenuChapitre(@RequestParam("chapitre") Long chapId, ModelMap model) {
 		Chapitre chapitre = chapitreDAO.findById(chapId);
 		Collection<Lecon> leconsDuChapitre = chapitre.getLecons();
 		model.addAttribute("chapitre_choisi", chapId);
 		model.addAttribute("chapitre", chapitre);
 		model.addAttribute("leconsDuChapitre", leconsDuChapitre);
+
+		ModifierChapitreModel myModel = new ModifierChapitreModel();
+		
+		myModel.setOrdreDuChapitre(chapitre.getOrdreDuChapitre());
+		myModel.setName(chapitre.getNom());
+		myModel.setDescription(chapitre.getDescription());
+		
+		model.addAttribute("myModel", myModel);
+		
 		return "contenuChapitre";
 	}
 
