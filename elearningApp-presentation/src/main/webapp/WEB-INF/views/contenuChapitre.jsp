@@ -12,9 +12,46 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+	<ul class="breadcrumb">
+		<li class="active"><a href="index">Home</a></li>
+		<li class="active"><a href="#">Profil</a></li>
+		<li class="active"><a href="voirTousLesCours">Gérer les cours</a></li>
+	</ul>
+
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class=" col-md-10">
+		
+		
+			<table class="table">
+				<tr>
+					<td><h4 class="text-muted" style="font-weight: bold;">Contenu du chapitre</h4></td>
+					<td><f:form action="AccesPageModifierChapitre">
+							<input type="submit" value="modifier le chapitre"
+								class="btn btn-warning" style="float: right;" />
+						</f:form></td>
+				</tr>
+			</table>
+
+
+			<table class="table  table-condensed">
+				<tr>
+					<td class="bg-primary" style="width: 15%; font-weight: bold;">Ordre
+						:</td>
+					<td>${chapitre.ordreDuChapitre }</td>
+				</tr>
+				<tr>
+					<td class="bg-primary" style="width: 15%; font-weight: bold;">Titre
+						:</td>
+					<td>${chapitre.nom }</td>
+				</tr>
+				<tr>
+					<td class="bg-primary" style="width: 15%; font-weight: bold;">Description
+						:</td>
+					<td>${chapitre.description }</td>
+			</table>
+
 			<h3 class="text-muted">Contenu du chapitre : Toutes les leçons</h3>
 			<table class="table table-striped table-bordered">
 				<thead>

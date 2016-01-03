@@ -37,6 +37,7 @@ import entities.MotCle;
 import entities.StatusCours;
 import model.AjoutChapitreModel;
 import model.AjoutLeconModel;
+import model.ModifierChapitreModel;
 import model.ModifierCoursModel;
 import model.MyModel;
 
@@ -257,6 +258,8 @@ public class Controlleur {
 	public String demandeVoirContenuChapitre(@RequestParam("chapitre") Long chapId, Model model) {
 		Chapitre chapitre = chapitreDAO.findById(chapId);
 		Collection<Lecon> leconsDuChapitre = chapitre.getLecons();
+		model.addAttribute("chapitre_choisi", chapId);
+		model.addAttribute("chapitre", chapitre);
 		model.addAttribute("leconsDuChapitre", leconsDuChapitre);
 		return "contenuChapitre";
 	}
@@ -345,5 +348,65 @@ public class Controlleur {
 			return "tousLesCours";
 		}
 	}
+	
+	
+	@RequestMapping(value = "/AccesPageModifierChapitre")
+	public String demandeAccesPageModifierChapitre(ModelMap model) {
+		long idChap = (Long) model.get("chapitre_choisi");
+		Chapitre chapitre = chapitreDAO.findById(idChap);
+
+		ModifierChapitreModel myModel = new ModifierChapitreModel();
+		
+		myModel.setOrdreDuChapitre(chapitre.getOrdreDuChapitre());
+		myModel.setName(chapitre.getNom());
+		myModel.setDescription(chapitre.getDescription());
+		
+		model.addAttribute("myModel", myModel);
+
+		return "modifierChapitre";
+	}
+
+	
+	
+	//modifierChapitre
+	@RequestMapping(value = "/modifierChapitre")
+	public String dbModifierChapitre(@ModelAttribute("myModel") @Valid ModifierChapitreModel modifierChapModel, BindingResult result,
+			ModelMap model) {
+
+		if (result.hasErrors()) {
+
+			model.addAttribute("messageAjoutChapError", "le chapitre n'a pas pu être ajouté");
+
+			AjoutChapitreModel ajoutChapModell = new AjoutChapitreModel();
+			model.addAttribute("ajoutChapModel", ajoutChapModell);
+			model.addAttribute("tousLesCours", tousLesCours);
+
+			List<FieldError> errors = result.getFieldErrors();
+			model.addAttribute("errors", errors);
+
+			return "tousLesCours";
+		}
+
+		else {
+
+			
+			long idChap = (Long) model.get("chapitre_choisi");
+			Chapitre chapitre = chapitreDAO.findById(idChap);
+			
+			chapitre.setOrdreDuChapitre(modifierChapModel.getOrdreDuChapitre());
+			chapitre.setNom(modifierChapModel.getName());
+			chapitre.setDescription(modifierChapModel.getDescription());
+			
+			chapitreDAO.edit(chapitre);
+
+			model.addAttribute("messageAjoutChap", "chapitre modifié avec succès");
+
+			model.addAttribute("tousLesCours", tousLesCours);
+			AjoutChapitreModel ajoutChapModell = new AjoutChapitreModel();
+			model.addAttribute("ajoutChapModel", ajoutChapModell);
+			return "tousLesCours";
+		}
+	}
+	
 
 }
