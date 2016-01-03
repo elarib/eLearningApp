@@ -37,6 +37,7 @@ import entities.MotCle;
 import entities.StatusCours;
 import model.AjoutChapitreModel;
 import model.AjoutLeconModel;
+import model.ModifierCoursModel;
 import model.MyModel;
 
 @Controller
@@ -121,8 +122,8 @@ public class Controlleur {
 			cours.setDateAjout(new Date());
 			cours.setStatus(StatusCours.PRIVE);
 			cours.setName(myModel.getName());
-			
-			String descriptionOutput = myModel.getDescription().replace("\n", "<br />\n" );
+
+			String descriptionOutput = myModel.getDescription().replace("\n", "<br />\n");
 			cours.setDescription(descriptionOutput);
 
 			ArrayList<String> motsClesNamesChoisis = myModel.getMotsClesChoisis();
@@ -134,15 +135,15 @@ public class Controlleur {
 				motsClesChoisis.add(motCle);
 			}
 			cours.setMotsCles(motsClesChoisis);
-			
+
 			String prerequisOutput1 = myModel.getPrerequis().replace("\n", "<br />\n" + "* ");
 			String prerequisOutput2 = "* " + prerequisOutput1;
 			cours.setPrerequis(prerequisOutput2);
-			
+
 			String objectifsOutput1 = myModel.getObjectifs().replace("\n", "<br />\n" + "* ");
 			String objectifsOutput2 = "* " + objectifsOutput1;
 			cours.setObjectifs(objectifsOutput2);
-			
+
 			coursDAO.create(cours);
 			tousLesCours.add(cours);
 			model.addAttribute("cours", cours);
@@ -175,10 +176,10 @@ public class Controlleur {
 			model.addAttribute("tousLesCours", tousLesCours);
 			AjoutChapitreModel ajoutChapModell = new AjoutChapitreModel();
 			model.addAttribute("ajoutChapModel", ajoutChapModell);
-			
+
 			List<FieldError> errors = result.getFieldErrors();
 			model.addAttribute("errors", errors);
-			
+
 			return "tousLesCours";
 		}
 
@@ -205,6 +206,9 @@ public class Controlleur {
 
 	@RequestMapping(value = "/contenuCours")
 	public String demandeVoirContenuCours(@RequestParam("cours") Long coursId, Model model) {
+		
+		model.addAttribute("cours_choisis", coursId);
+		
 		Cours cours = coursDAO.findById(coursId);
 		Collection<Chapitre> chapitresCours = cours.getChapitres();
 		model.addAttribute("cours", cours);
@@ -262,6 +266,84 @@ public class Controlleur {
 		Lecon lecon = leconDAO.findById(leconId);
 		model.addAttribute("lecon", lecon);
 		return "contenuLecon";
+	}
+
+	// Modification du cours
+
+	@RequestMapping(value = "/AccesPageModifierCours")
+	public String demandeAccesPageModifierCours(ModelMap model) {
+		long idCours = (Long) model.get("cours_choisis");
+		Cours cours = coursDAO.findById(idCours);
+
+		ModifierCoursModel myModel = new ModifierCoursModel();
+		myModel.setName(cours.getName());
+		myModel.setDescription(cours.getDescription());
+		myModel.setPrerequis(cours.getObjectifs());
+		myModel.setObjectifs(cours.getObjectifs());
+		myModel.setAllCategoriesNames(allCategoriesNames);
+		myModel.setAllmotsCles(motCleNames);
+
+		model.addAttribute("myModel", myModel);
+
+		return "modifierCours";
+	}
+
+	@RequestMapping(value = "/modifierCours", method = RequestMethod.POST)
+	public String modifierCours(@ModelAttribute("myModel") @Valid ModifierCoursModel myModel, BindingResult result,
+			ModelMap model) {
+		if (result.hasErrors()) {
+
+			myModel.setAllCategoriesNames(allCategoriesNames);
+			myModel.setAllmotsCles(motCleNames);
+			model.addAttribute("myModel", myModel);
+
+			return "modifierCours";
+		}
+
+		else {
+            
+			long id = (Long) model.get("cours_choisis");
+			Cours cours = coursDAO.findById(id);
+			//tousLesCours.remove(cours);
+			CategorieCours cat;
+			cat = categorieDAO.findByName(myModel.getCategorieName());
+			cours.setCategorie(cat);
+			cours.setStatus(StatusCours.PRIVE);
+			cours.setName(myModel.getName());
+
+			String descriptionOutput = myModel.getDescription().replace("\n", "<br />\n");
+			cours.setDescription(descriptionOutput);
+
+			ArrayList<String> motsClesNamesChoisis = myModel.getMotsClesChoisis();
+			ArrayList<MotCle> motsClesChoisis = new ArrayList<MotCle>();
+			Iterator<String> it3 = motsClesNamesChoisis.iterator();
+			while (it3.hasNext()) {
+				String motCleName = it3.next();
+				MotCle motCle = motCleDAO.findByName(motCleName);
+				motsClesChoisis.add(motCle);
+			}
+			cours.setMotsCles(motsClesChoisis);
+
+			String prerequisOutput1 = myModel.getPrerequis().replace("\n", "<br />\n" + "* ");
+			String prerequisOutput2 = "* " + prerequisOutput1;
+			cours.setPrerequis(prerequisOutput2);
+
+			String objectifsOutput1 = myModel.getObjectifs().replace("\n", "<br />\n" + "* ");
+			String objectifsOutput2 = "* " + objectifsOutput1;
+			cours.setObjectifs(objectifsOutput2);
+
+			coursDAO.edit(cours);
+			//tousLesCours.add(cours);
+			
+			tousLesCours = (ArrayList<Cours>) coursDAO.findAll();
+			
+			model.addAttribute("cours", cours);
+			
+			model.addAttribute("tousLesCours", tousLesCours);
+			AjoutChapitreModel ajoutChapModel = new AjoutChapitreModel();
+			model.addAttribute("ajoutChapModel", ajoutChapModel);
+			return "tousLesCours";
+		}
 	}
 
 }

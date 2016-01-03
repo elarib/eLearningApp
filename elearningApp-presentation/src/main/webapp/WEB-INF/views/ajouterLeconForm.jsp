@@ -39,13 +39,6 @@
 					<td style="color: red;"><f:errors path="lienVideo"></f:errors></td>
 				</tr>
 
-				<tr>
-					<td>Vidéo :</td>
-					<td><iframe width="560" height="315"
-							src="https://www.youtube.com/embed/eOOyxSMI0aE" frameborder="0"
-							allowfullscreen></iframe></td>
-				</tr>
-
 
 				<tr>
 					<td><f:input type="text" id="hiddenHTML" path="content"

@@ -17,27 +17,43 @@
 	<ul class="breadcrumb">
 		<li class="active"><a href="index">Home</a></li>
 		<li class="active"><a href="#">Profil</a></li>
-		<li class="active">Gérer les cours</li>
+		<li class="active"><a href="voirTousLesCours">Gérer les cours</a></li>
 	</ul>
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class=" col-md-10">
-			<h3 class="text-muted">Contenu du cours :</h3>
+
+			<table class="table">
+				<tr>
+					<td><h4 class="text-muted" style="font-weight: bold;">Contenu du cours</h4></td>
+					<td><f:form action="AccesPageModifierCours">
+							<input type="submit" value="modifier le cours"
+								class="btn btn-warning" style="float: right;" />
+						</f:form></td>
+				</tr>
+			</table>
+
+
 			<table class="table  table-condensed">
-				<tr >
-					<td class="bg-primary" style="width: 15%; font-weight: bold;">Titre :</td>
+				<tr>
+					<td class="bg-primary" style="width: 15%; font-weight: bold;">Titre
+						:</td>
 					<td>${cours.name }</td>
 				</tr>
 				<tr>
-					<td class="bg-primary" style="width: 15%; font-weight: bold;">Description :</td>
+					<td class="bg-primary" style="width: 15%; font-weight: bold;">Description
+						:</td>
 					<td>${cours.description }</td>
 				</tr>
 				<tr>
-					<td class="bg-primary" style="width: 15%; font-weight: bold;">Prerequis :</td>
+					<td class="bg-primary" style="width: 15%; font-weight: bold;">Prerequis
+						:</td>
 					<td>${cours.prerequis }</td>
 				</tr>
 				<tr>
-					<td class="bg-primary" style="width: 15%; font-weight: bold; font-style: italic;">Objectifs :</td>
+					<td class="bg-primary"
+						style="width: 15%; font-weight: bold; font-style: italic;">Objectifs
+						:</td>
 					<td>${cours.objectifs }</td>
 				</tr>
 			</table>
@@ -82,8 +98,10 @@
 					</c:forEach>
 				</tbody>
 			</table>
+
 		</div>
 		<div class="col-md-1"></div>
 	</div>
+
 </body>
 </html>

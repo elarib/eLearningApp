@@ -29,7 +29,7 @@
 							les cours</h4></td>
 					<td><f:form action="AccesPageajoutCours">
 							<input type="submit" value="ajouter un cours"
-								class="btn btn-primary" style="float: right;" />
+								class="btn btn-warning" style="float: right;" />
 						</f:form></td>
 				</tr>
 			</table>
