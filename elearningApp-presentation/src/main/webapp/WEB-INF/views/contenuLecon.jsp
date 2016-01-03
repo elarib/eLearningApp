@@ -11,9 +11,16 @@
 				<td>${lecon.id}</td>
 			</tr>
 			<tr>
-				<td>name  is :</td>
+				<td>title is :</td>
 				<td>${lecon.nom }
 			</tr>
+
+			<tr>
+				<td>Content is :</td>
+				<td>${lecon.content }</td>
+			</tr>
+
+
 			<tr>
 				<td>lien vidéo is :</td>
 				<td>${lecon.lienVideo}</td>

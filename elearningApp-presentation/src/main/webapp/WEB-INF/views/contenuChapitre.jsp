@@ -13,17 +13,14 @@
 </head>
 <body>
 	<div class="row">
-		<div class="col-md-2">
-			<h2>MENU</h2>
-		</div>
-		<div class=" col-md-9">
+		<div class="col-md-1"></div>
+		<div class=" col-md-10">
 			<h3 class="text-muted">Contenu du chapitre : Toutes les leçons</h3>
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr class="success">
 						<th>ID</th>
-						<th>Name</th>
-						<th>Lien Vidéo</th>
+						<th>Titre</th>
 						<th>Contenu</th>
 					</tr>
 				</thead>
@@ -33,23 +30,20 @@
 						<tr>
 
 							<td>${lecon.id}</td>
-							<td>${lecon.nom }
-							<td>${lecon.lienVideo}</td>
-
-
-							<f:form method="get" action="contenuLecon">
-								<input type=hidden id="thisField" name="lecon"
-									value="${lecon.id }" />
-								<td><input type="submit" value="voir le contenu"
-									class="btn btn-link" /></td>
-							</f:form>
-
+							<td>${lecon.nom }<f:form method="get" action="contenuLecon">
+									<input type=hidden id="thisField" name="lecon"
+										value="${lecon.id }" />
+									<td><input type="submit" value="voir le contenu"
+										class="btn btn-link" /></td>
+								</f:form>
 						</tr>
 
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
+
+		<div class="col-md-1"></div>
 	</div>
 </body>
 </html>

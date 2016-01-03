@@ -9,14 +9,13 @@ public class AjoutLeconModel {
 	@Size(min = 5, max = 10)
 	private String name;
 	@NotNull
-	@Size(min = 10, max = 20)
 	private String lienVideo;
+
+	private String content;
 
 	public AjoutLeconModel() {
 		super();
 	}
-	
-	
 
 	public AjoutLeconModel(String name, String lienVideo) {
 		super();
@@ -38,6 +37,14 @@ public class AjoutLeconModel {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 }

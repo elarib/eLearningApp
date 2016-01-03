@@ -10,6 +10,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -21,14 +22,14 @@
 
 	<div class="col-md-1"></div>
 	<div class=" col-md-10">
-		<div class="row">
+		<div class="row" style="height: 70%; overflow: auto;">
 			<table class="table">
 				<tr>
-					<td><h4 class="text-muted" style="font-weight: bold;">Tous les cours</h4></td>
+					<td><h4 class="text-muted" style="font-weight: bold;">Tous
+							les cours</h4></td>
 					<td><f:form action="AccesPageajoutCours">
-
-							<input type="submit" value="ajouter un cours" class="btn btn-primary" style="float: right;" />
-
+							<input type="submit" value="ajouter un cours"
+								class="btn btn-primary" style="float: right;" />
 						</f:form></td>
 				</tr>
 			</table>
@@ -137,6 +138,9 @@
 
 	</div>
 	<div class=" col-md-1"></div>
+
+
+
 	<script>
 	var setIdModal=function(id){
 		$('#hiddenId').val(id);

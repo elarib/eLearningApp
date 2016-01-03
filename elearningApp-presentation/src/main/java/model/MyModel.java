@@ -18,11 +18,15 @@ public class MyModel {
 	@NotEmpty
 	private String description;
 	@NotNull
+	@NotEmpty
 	private String categorieName;
 	private ArrayList<String> allmotsCles;
+	@NotNull
 	private ArrayList<String> motsClesChoisis;
 	private List<String> allCategoriesNames;
+	@NotEmpty
 	private String prerequis;
+	@NotEmpty
 	private String objectifs;
 
 	public String getName() {

@@ -2,6 +2,7 @@ package entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,8 +18,9 @@ public class Lecon implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nom;
-	@Lob
-	private byte[] file;
+	@Lob 
+	@Column(name="content", length=1024)
+	private String content;
 	private String lienVideo;
 	@ManyToOne
 	@JoinColumn(name = "chapitre_id")
@@ -48,12 +50,7 @@ public class Lecon implements Serializable {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public byte[] getFile() {
-		return file;
-	}
-	public void setFile(byte[] file) {
-		this.file = file;
-	}
+	
 	public String getLienVideo() {
 		return lienVideo;
 	}
@@ -66,6 +63,14 @@ public class Lecon implements Serializable {
 	public void setChapitre(Chapitre chapitre) {
 		this.chapitre = chapitre;
 	}
-	
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 	
 }

@@ -121,7 +121,9 @@ public class Controlleur {
 			cours.setDateAjout(new Date());
 			cours.setStatus(StatusCours.PRIVE);
 			cours.setName(myModel.getName());
-			cours.setDescription(myModel.getDescription());
+			
+			String descriptionOutput = myModel.getDescription().replace("\n", "<br />\n" );
+			cours.setDescription(descriptionOutput);
 
 			ArrayList<String> motsClesNamesChoisis = myModel.getMotsClesChoisis();
 			ArrayList<MotCle> motsClesChoisis = new ArrayList<MotCle>();
@@ -132,8 +134,15 @@ public class Controlleur {
 				motsClesChoisis.add(motCle);
 			}
 			cours.setMotsCles(motsClesChoisis);
-			cours.setPrerequis(myModel.getPrerequis());
-			cours.setObjectifs(myModel.getObjectifs());
+			
+			String prerequisOutput1 = myModel.getPrerequis().replace("\n", "<br />\n" + "* ");
+			String prerequisOutput2 = "* " + prerequisOutput1;
+			cours.setPrerequis(prerequisOutput2);
+			
+			String objectifsOutput1 = myModel.getObjectifs().replace("\n", "<br />\n" + "* ");
+			String objectifsOutput2 = "* " + objectifsOutput1;
+			cours.setObjectifs(objectifsOutput2);
+			
 			coursDAO.create(cours);
 			tousLesCours.add(cours);
 			model.addAttribute("cours", cours);
@@ -230,6 +239,7 @@ public class Controlleur {
 			Chapitre chapitre = chapitreDAO.findById(chpId);
 
 			Lecon lecon = new Lecon(ajoutLeconModel.getName(), ajoutLeconModel.getLienVideo());
+			lecon.setContent(ajoutLeconModel.getContent());
 			lecon.setChapitre(chapitre);
 			leconDAO.create(lecon);
 
