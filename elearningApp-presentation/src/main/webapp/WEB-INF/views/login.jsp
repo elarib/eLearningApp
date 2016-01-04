@@ -8,12 +8,10 @@
 <title>Login page</title>
 
 <link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	href="<c:url value="resources/vendor/bootstrap/css/bootstrap.min.css" />">
 
-
-<link rel="stylesheet" type="text/css"
-	href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
-</head>
+<link rel="stylesheet"
+	href="<c:url value="resources/vendor/font-awesome/css/font-awesome.min.css" />"></head>
 
 <body>
 
@@ -39,6 +37,13 @@
 					<c:url var="loginUrl" value="/login" />
 					<form action="${loginUrl}" method="post" dclass="form-horizontal"
 						role="form">
+						<c:if test="${logout != null}">
+							<div class="alert alert-success">
+							 ${logout}
+							</div>
+						
+						</c:if>
+						
 						<c:if test="${error != null}">
 							<div class="alert alert-danger">
 								<c:if test="${not empty error }">
@@ -89,24 +94,24 @@
 						<input type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />
 
-						<div style="margin-top: 10px" class="form-group">
+						<div style="margin-top: 10px;display: flex;" class="form-group" >
 							<!-- Button -->
 
 							<div class="col-sm-12 controls">
 								<input type="submit" class="btn btn-success" value="Login" />
 							</div>
-						</div>
-
-
-						<div class="form-group">
+							
 							<div class="col-md-12 control">
 								<div
-									style="border-top: 1px solid #888; padding-top: 15px; font-size: 85%">
+									style=" width: 217px;padding-top: 35px; font-size: 85%">
 									Don't have an account! <a href="<c:url value="/signup" />"> Sign Up Here
 									</a>
 								</div>
 							</div>
 						</div>
+
+
+						
 					</form>
 				</div>
 			</div>

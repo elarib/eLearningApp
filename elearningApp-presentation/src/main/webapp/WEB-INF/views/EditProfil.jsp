@@ -6,34 +6,90 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Modifier mes Infos</title>
+<link rel="stylesheet"
+	href="<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css" />">
 </head>
 <body>
+	<form class="form-horizontal" method="POST">
 
 
-	<form  method="POST">
+		<fieldset>
 
-		<h2>
-			Modifier <span class="red"><strong>Mes Infos</strong></span>
-		</h2>
-		<h5>*Modifer seul les champs QUE vous voulez</h5>
-		<label for="nom">Nom</label> <input type="text" id="nom" name="nom"
-			placeholder="Entrer votre Nom" value="${sessionScope.user.nom }" />
+			<!-- Form Name -->
 
-		<label for="prenom">Prenom</label> <input type="text" id="prenom"
-			name="prenom" placeholder="Entrer votre Prenom"
-			value="${sessionScope.user.prenom }" /> <label for="motdepasse">Mot
-			De passe</label> <input type="password" id="motdepasse" name="motdepasse"
-			placeholder="Entrer votre Nom" " /> <label for="date">Prenom</label>
-		<input type="text" id="date" name="date"
-			placeholder="Entrer votre date"
-			value="${sessionScope.user.dateNaissance }" /> <input type="submit"
-			value="Sauvegarder">
-			
+
+			<legend>Modifier Mes Infos</legend>
+			<c:if test="${good !=null }">
+			<div class="row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4">
+					<div class="alert alert-success">
+						Infos Sauvegardé avec success.
+					</div>
+				</div>
+				<div class="col-sm-4"></div>
+			</div>
+			</c:if>
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="Nom">Nom</label>
+				<div class="col-md-4">
+					<input id="Nom" name="nom" type="text"
+						value="${sessionScope.user.nom}" class="form-control input-md">
+					<span class="help-block"></span>
+				</div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="prenom">Prenom</label>
+				<div class="col-md-4">
+					<input id="prenom" name="prenom" type="text"
+						value="${sessionScope.user.prenom}" class="form-control input-md">
+					<span class="help-block"></span>
+				</div>
+			</div>
+
+			<!-- Password input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="motdepasse">Mot
+					de Passe</label>
+				<div class="col-md-4">
+					<input id="motdepasse" name="motdepasse" type="password"
+						placeholder="Mot de Passe" class="form-control input-md">
+					<span class="help-block"></span>
+				</div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="date">Date de
+					Naissance</label>
+				<div class="col-md-4">
+					<input id="date" name="date" type="text"
+						value="${sessionScope.user.dateNaissance}"
+						class="form-control input-md"> <span class="help-block"></span>
+				</div>
+
+			</div>
+
+			<!-- Button -->
+			<div class="form-group">
+				<div class="form-group"">
+					<center>
+						<button id="submit" name="submit" class="btn btn-primary">Enregistrer</button>
+					</center>
+				</div>
+			</div>
 			<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" />
-			
+				value="${_csrf.token}" />
+
+
+		</fieldset>
 	</form>
+
+
 
 
 

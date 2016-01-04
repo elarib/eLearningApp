@@ -251,11 +251,13 @@ public class LogInUser {
 	{
 		
 		req.getSession().invalidate();
-		model.addAttribute("other", req.getSession());;
-		model.addAttribute("source", this.getClass());
-		model.addAttribute("traitement", "Logout avec succés");
+//		model.addAttribute("other", req.getSession());;
+//		model.addAttribute("source", this.getClass());
+//		model.addAttribute("traitement", "Logout avec succés");
+//		
 		
-		return "reussi";
+		model.addAttribute("logout", "Vous avez déconnecté avec succés !");
+		return "login";
 		
 		
 		
