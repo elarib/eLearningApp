@@ -1,5 +1,7 @@
 package dao;
 
+import dao.impl.UserDaoImpl;
+
 /**
  * 
  * @author sophia
@@ -30,7 +32,12 @@ public class SingletonDAO {
 	private final static LeconDAO leconDAO = new LeconDAO();
 	private final static CategorieDAO categorieDAO = new CategorieDAO();
 	private final static MotCleDAO motCleDAO = new MotCleDAO();
+	private final static RoleDao roleDAO = new RoleDao();
 
+	
+	
+	private final static UserDAO userDao = new UserDaoImpl();
+	
 	private SingletonDAO(){	
 	}
 	
@@ -52,5 +59,13 @@ public class SingletonDAO {
 
 	public static MotCleDAO getMotcledao() {
 		return motCleDAO;
+	}
+
+	public static UserDAO getUserdao() {
+		return userDao;
+	}
+
+	public static RoleDao getRoledao() {
+		return roleDAO;
 	}
 }

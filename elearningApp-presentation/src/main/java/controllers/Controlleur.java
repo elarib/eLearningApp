@@ -106,7 +106,7 @@ public class Controlleur {
 	}
 
 	@RequestMapping(value = "/ajoutCours", method = RequestMethod.POST)
-	public String ajoutCours(@ModelAttribute("myModel") @Valid MyModel myModel, BindingResult result, ModelMap model) {
+	public String ajoutCours(@ModelAttribute("myModel") @Valid MyModel myModel, BindingResult result, ModelMap model) throws Exception {
 		if (result.hasErrors()) {
 
 			myModel.setAllCategoriesNames(allCategoriesNames);
@@ -170,7 +170,7 @@ public class Controlleur {
 	@RequestMapping(value = "/ajoutChapitre")
 	public String dbAjoutChapitre(@RequestParam("cours") Long coursId,
 			@ModelAttribute("ajoutChapModel") @Valid AjoutChapitreModel ajoutChapModel, BindingResult result,
-			ModelMap model) {
+			ModelMap model) throws Exception {
 
 		if (result.hasErrors()) {
 
@@ -234,7 +234,7 @@ public class Controlleur {
 
 	@RequestMapping(value = "/dbAjoutLecon")
 	public String dbAjoutLecon(@ModelAttribute("ajoutLeconModel") @Valid AjoutLeconModel ajoutLeconModel,
-			BindingResult result, ModelMap model) {
+			BindingResult result, ModelMap model) throws Exception {
 		if (result.hasErrors()) {
 
 			return "ajouterLeconForm";
@@ -246,7 +246,8 @@ public class Controlleur {
 			Chapitre chapitre = chapitreDAO.findById(chpId);
 
 			Lecon lecon = new Lecon(ajoutLeconModel.getName(), ajoutLeconModel.getLienVideo());
-			lecon.setContent(ajoutLeconModel.getContent());
+			
+//			lecon.setContent(ajoutLeconModel.getContent());
 			lecon.setChapitre(chapitre);
 			leconDAO.create(lecon);
 

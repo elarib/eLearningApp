@@ -9,16 +9,18 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import exception.AuthenticationException;
 
 /**
  * 
  *
- * @param <T> the entity type
- * @param <K> the key type
+ * @param <T>
+ *            the entity type
+ * @param <K>
+ *            the key type
  */
 
-public abstract class GenericDAO<T extends Serializable, K extends Serializable>
-		implements DaoInterface<T, K>  {
+public abstract class GenericDAO<T extends Serializable, K extends Serializable> implements DaoInterface<T, K> {
 
 	protected Class<T> entityType;
 	protected Class<K> idType;
@@ -34,8 +36,7 @@ public abstract class GenericDAO<T extends Serializable, K extends Serializable>
 	 */
 	protected abstract EntityManager getEntityManager();
 
-	@Override
-	public T create(T obj) {
+	public T create(T obj) throws Exception {
 		final EntityManager em = getEntityManager();
 		final EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -45,15 +46,15 @@ public abstract class GenericDAO<T extends Serializable, K extends Serializable>
 			em.refresh(obj);
 			tx.commit();
 		} catch (Exception ex) {
-			System.err.println(ex.getMessage());
 			tx.rollback();
+
+			throw new AuthenticationException(ex.getMessage());
 		} finally {
 			em.close();
 		}
 		return obj;
 	}
 
-	@Override
 	public T edit(T obj) {
 		final EntityManager em = getEntityManager();
 		em.getTransaction().begin();
@@ -69,7 +70,6 @@ public abstract class GenericDAO<T extends Serializable, K extends Serializable>
 		return obj;
 	}
 
-	@Override
 	public T remove(K key) {
 		final EntityManager em = getEntityManager();
 		em.getTransaction().begin();
@@ -90,7 +90,6 @@ public abstract class GenericDAO<T extends Serializable, K extends Serializable>
 		return found;
 	}
 
-	@Override
 	public T findById(K key) {
 		final EntityManager em = getEntityManager();
 		em.getTransaction().begin();
@@ -110,7 +109,7 @@ public abstract class GenericDAO<T extends Serializable, K extends Serializable>
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
+
 	public Collection<T> findAll() {
 		final EntityManager em = getEntityManager();
 		try {
@@ -123,7 +122,6 @@ public abstract class GenericDAO<T extends Serializable, K extends Serializable>
 		}
 	}
 
-	@Override
 	public Long count() {
 		final EntityManager em = getEntityManager();
 		try {
@@ -136,6 +134,5 @@ public abstract class GenericDAO<T extends Serializable, K extends Serializable>
 			em.close();
 		}
 	}
-	
 
 }

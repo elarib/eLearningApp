@@ -9,8 +9,6 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import entities.CategorieCours;
-import entities.Chapitre;
-import entities.Cours;
 
 public class CategorieDAO extends GenericDAO<CategorieCours, Integer> {
 	

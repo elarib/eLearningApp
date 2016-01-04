@@ -13,7 +13,7 @@ import java.util.Collection;
 
 public interface DaoInterface<T extends Serializable, K extends Serializable> {
 	
-	T create(T obj);
+	T create(T obj) throws Exception;
 	T edit(T obj);
 	T remove(K key);
 	T findById(K key);
