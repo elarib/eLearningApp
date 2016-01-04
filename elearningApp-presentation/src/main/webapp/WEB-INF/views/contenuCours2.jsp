@@ -7,7 +7,7 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="resources/vendor/font-awesome/css/font-awesome.css">
+	href="<c:url value="/resources/vendor/font-awesome/css/font-awesome.css" />">
 <link rel="stylesheet"
 	href="resources/vendor/simple-line-icons/css/simple-line-icons.css">
 <link rel="stylesheet"

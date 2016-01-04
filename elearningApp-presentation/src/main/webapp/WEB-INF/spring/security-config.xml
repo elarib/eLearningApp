@@ -9,12 +9,13 @@
 
 
 
-	<http pattern="/resources/**" security="none" />
+
 
 	<http auto-config="true">
 
 
 		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/resources/**" access="hasAnyRole('ROLE_ADMIN','ROLE_APPRENANT')" />
 		<intercept-url pattern="/error" access="permitAll" />
 		<intercept-url pattern="/confirm" access="permitAll" />
 		<intercept-url pattern="/login" access="permitAll" />
@@ -24,7 +25,6 @@
 		<intercept-url pattern="/reenvoyerConfirmation" access="permitAll" />
 
 		<intercept-url pattern="/signup" access="isAnonymous()" />
-		<intercept-url pattern="/resources/**" access="permitAll" />
 		<intercept-url pattern="/profil/edit"
 			access="hasAnyRole('ROLE_ADMIN','ROLE_APPRENANT')" />
 		<intercept-url pattern="/profil**"
@@ -42,7 +42,7 @@
 
 		<csrf />
 	</http>
-
+	
 
 
 

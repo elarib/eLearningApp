@@ -40,7 +40,7 @@ public class LogInUser {
 	private static UserDAO userDao = SingletonDAO.getUserdao();
 
 	
-	@RequestMapping(method = RequestMethod.GET)
+//	@RequestMapping(method = RequestMethod.GET)
 	public String showNormalUserPage( HttpServletRequest req) {
 
 

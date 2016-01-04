@@ -24,6 +24,7 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	
 
 	<context:component-scan base-package="controllers" />
 
@@ -47,7 +48,7 @@
 				<beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
 			</beans:props>
 		</beans:property>
-		
+
 	</beans:bean>
 
 
