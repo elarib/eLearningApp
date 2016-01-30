@@ -4,14 +4,82 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ajouter cours</title>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!-- icciiii -->
+
+<link rel="stylesheet"
+	href="<c:url value="/resources/css/jquery-ui.css" ></c:url>">
+<script src="<c:url value="/resources/js/jquery-1.10.2.js" ></c:url>"></script>
+<script src="<c:url value="/resources/js/jquery-ui.js" ></c:url>"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script>
+	$(function() {
+		var availableTags1 = document.getElementById("emailsJSON").innerHTML;
+		var availableTags = JSON.parse(availableTags1);
+		function split(val) {
+			return val.split(/,\s*/);
+		}
+		function extractLast(term) {
+			return split(term).pop();
+		}
+
+		$("#tags")
+		// don't navigate away from the field on tab when selecting an item
+		.bind(
+				"keydown",
+				function(event) {
+					if (event.keyCode === $.ui.keyCode.TAB
+							&& $(this).autocomplete("instance").menu.active) {
+						event.preventDefault();
+					}
+				}).autocomplete(
+				{
+					minLength : 0,
+					source : function(request, response) {
+						// delegate back to autocomplete, but extract the last term
+						response($.ui.autocomplete.filter(availableTags,
+								extractLast(request.term)));
+					},
+					focus : function() {
+						// prevent value inserted on focus
+						return false;
+					},
+					select : function(event, ui) {
+						var terms = split(this.value);
+						// remove the current input
+						terms.pop();
+						// add the selected item
+						terms.push(ui.item.value);
+						// add placeholder to get the comma-and-space at the end
+						terms.push("");
+						this.value = terms.join(", ");
+						return false;
+					}
+				});
+	});
+</script>
+<!-- ebd icii -->
+<script>
+	function fct() {
+		var x = document.getElementById("emailsJSON").innerHTML;
+		var y = JSON.parse(x);
+		alert(y);
+	}
+</script>
+
 </head>
 <body>
+
+	<div id="emailsJSON">${myModel.emailsJSON }</div>
+
+
+
 	<ul class="breadcrumb">
 		<li class="active"><a href="index">Home</a></li>
 		<li class="active"><a href="#">Profil</a></li>
@@ -26,6 +94,7 @@
 	<div class=" col-md-7">
 		<div class="row">
 			<f:form modelAttribute="myModel" method="post" action="ajoutCours">
+
 				<div class="form-group">
 
 					<label for="name">Titre :</label>
@@ -33,6 +102,7 @@
 						placeholder="Titre" />
 					<f:errors path="name" style="color : red;"></f:errors>
 				</div>
+
 
 				<div class="form-group">
 					<label for="desc">Description :</label>
@@ -74,12 +144,21 @@
 				</div>
 
 				<div class="form-group">
+					<label for="tags">Emails: </label>
+					 <f:input id="tags" path="emails" class="form-control" />
+				</div>
+
+
+
+				<div class="form-group">
 					<input type="submit" value="ajouter le cours"
 						class="btn btn-primary" />
 				</div>
 			</f:form>
+			<button onclick="fct()">bbb</button>
 		</div>
 		<div class="col-md-2"></div>
 	</div>
+
 </body>
 </html>

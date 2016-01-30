@@ -28,6 +28,8 @@ public class MyModel {
 	private String prerequis;
 	@NotEmpty
 	private String objectifs;
+	private String emailsJSON;
+	private String emails;
 
 	public String getName() {
 		return name;
@@ -94,5 +96,23 @@ public class MyModel {
 	public void setObjectifs(String objectifs) {
 		this.objectifs = objectifs;
 	}
+
+	public String getEmailsJSON() {
+		return emailsJSON;
+	}
+
+	public void setEmailsJSON(String emailsJSON) {
+		this.emailsJSON = emailsJSON;
+	}
+
+	public String getEmails() {
+		return emails;
+	}
+
+	public void setEmails(String emails) {
+		this.emails = emails;
+	}
+	
+
 
 }

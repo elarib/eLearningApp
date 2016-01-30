@@ -1,4 +1,13 @@
-/home/sophia/eLearningApp/elearningApp-presentation/src/main/java/model/MyModel.java
-/home/sophia/eLearningApp/elearningApp-presentation/src/main/java/controllers/Controlleur.java
-/home/sophia/eLearningApp/elearningApp-presentation/src/main/java/model/AjoutLeconModel.java
-/home/sophia/eLearningApp/elearningApp-presentation/src/main/java/model/AjoutChapitreModel.java
+C:\Users\Sophia\my_git\eLearningApp\elearningApp-presentation\src\main\java\model\AjoutLeconModel.java
+C:\Users\Sophia\my_git\eLearningApp\elearningApp-presentation\src\main\java\services\CustomUserDetailsService.java
+C:\Users\Sophia\my_git\eLearningApp\elearningApp-presentation\src\main\java\model\ModifierCoursModel.java
+C:\Users\Sophia\my_git\eLearningApp\elearningApp-presentation\src\main\java\services\SendMailService.java
+C:\Users\Sophia\my_git\eLearningApp\elearningApp-presentation\src\main\java\services\MySimpleUrlAuthenticationSuccessHandler.java
+C:\Users\Sophia\my_git\eLearningApp\elearningApp-presentation\src\main\java\model\ModifierChapitreModel.java
+C:\Users\Sophia\my_git\eLearningApp\elearningApp-presentation\src\main\java\model\AjoutChapitreModel.java
+C:\Users\Sophia\my_git\eLearningApp\elearningApp-presentation\src\main\java\controllers\Profil.java
+C:\Users\Sophia\my_git\eLearningApp\elearningApp-presentation\src\main\java\controllers\Controlleur.java
+C:\Users\Sophia\my_git\eLearningApp\elearningApp-presentation\src\main\java\model\MyModel.java
+C:\Users\Sophia\my_git\eLearningApp\elearningApp-presentation\src\main\java\controllers\ConfirmerCompte.java
+C:\Users\Sophia\my_git\eLearningApp\elearningApp-presentation\src\main\java\validator\UserValidator.java
+C:\Users\Sophia\my_git\eLearningApp\elearningApp-presentation\src\main\java\controllers\LogInUser.java

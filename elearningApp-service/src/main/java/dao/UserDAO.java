@@ -3,7 +3,9 @@ package dao;
 
 
 import java.text.ParseException;
+import java.util.List;
 
+import entities.Cours;
 import entities.User;
 import exception.AuthenticationException;
 import exception.ConfirmationException;
@@ -26,6 +28,10 @@ public interface UserDAO extends DaoInterface<User, Long> {
 	
 	public boolean findEmail(String email) throws EntityNotFoundException;
 	
+	public List<String> findAllEmails();
+	
+	public List<String> findAllConfirmedEmails();
+		
 	
 	// Infos={Nom,Prenom,MotdePasse,dateDeNaissance}
 	public User modifierInformation(User user,Object... Infos) throws ParseException;

@@ -9,9 +9,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import dao.GenericDAO;
 import dao.UserDAO;
+import entities.Cours;
 import entities.User;
 import exception.AuthenticationException;
 import exception.ConfirmationException;
@@ -162,10 +164,23 @@ public class UserDaoImpl extends GenericDAO<User, Long> implements UserDAO {
 
 		return user;
 	}
+	
+	public List<String> findAllEmails(){
+		List<String> emails;
+		TypedQuery<String> query = getEntityManager().createNamedQuery("User.findAllEmails", String.class);
+		emails = query.getResultList();
+		return emails;
+	}
 
 
 
 
+
+
+	public List<String> findAllConfirmedEmails() {
+		// TODO à compléter
+		return null;
+	}
 
 
 	

@@ -13,13 +13,54 @@
 </head>
 
 <body>
+
+	<ul class="breadcrumb">
+		<li class="active"><a href="index">Home</a></li>
+		<li class="active"><a href="#">Profil</a></li>
+		<li class="active"><a href="voirTousLesCours">Gérer les cours</a></li>
+	</ul>
 	<div class="row">
-		<div class="col-md-2"><h2>MENU</h2></div>
-		<div class=" col-md-9">
-			<h3 class="text-muted">Contenu du cours "tous les chapitres"</h3>
+		<div class="col-md-1"></div>
+		<div class=" col-md-10">
+
+			<table class="table">
+				<tr>
+					<td><h4 class="text-muted" style="font-weight: bold;">Contenu du cours</h4></td>
+					<td><f:form action="AccesPageModifierCours">
+							<input type="submit" value="modifier le cours"
+								class="btn btn-warning" style="float: right;" />
+						</f:form></td>
+				</tr>
+			</table>
+
+
+			<table class="table  table-condensed">
+				<tr>
+					<td class="bg-primary" style="width: 15%; font-weight: bold;">Titre
+						:</td>
+					<td>${cours.name }</td>
+				</tr>
+				<tr>
+					<td class="bg-primary" style="width: 15%; font-weight: bold;">Description
+						:</td>
+					<td>${cours.description }</td>
+				</tr>
+				<tr>
+					<td class="bg-primary" style="width: 15%; font-weight: bold;">Prerequis
+						:</td>
+					<td>${cours.prerequis }</td>
+				</tr>
+				<tr>
+					<td class="bg-primary"
+						style="width: 15%; font-weight: bold; font-style: italic;">Objectifs
+						:</td>
+					<td>${cours.objectifs }</td>
+				</tr>
+			</table>
+			<h3 class="text-muted">Chapitres du cours :</h3>
 			<table class="table table-striped table-bordered">
 				<thead>
-					<tr class="success">
+					<tr class="bg-primary">
 						<th>ID</th>
 						<th>Ordre</th>
 						<th>Name</th>
@@ -57,7 +98,10 @@
 					</c:forEach>
 				</tbody>
 			</table>
+
 		</div>
+		<div class="col-md-1"></div>
 	</div>
+
 </body>
 </html>

@@ -24,18 +24,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.google.gson.Gson;
+
 import dao.CategorieDAO;
 import dao.ChapitreDAO;
 import dao.CoursDAO;
 import dao.LeconDAO;
 import dao.MotCleDAO;
 import dao.SingletonDAO;
+import dao.UserDAO;
+import dao.impl.UserDaoImpl;
 import entities.CategorieCours;
 import entities.Chapitre;
 import entities.Cours;
 import entities.Lecon;
 import entities.MotCle;
 import entities.StatusCours;
+import entities.User;
 import model.AjoutChapitreModel;
 import model.AjoutLeconModel;
 import model.ModifierChapitreModel;
@@ -51,10 +56,13 @@ public class Controlleur {
 	private static LeconDAO leconDAO;
 	private static CategorieDAO categorieDAO;
 	private static MotCleDAO motCleDAO;
+	private static UserDAO userDAO;
 
 	private ArrayList<String> motCleNames;
 	private List<String> allCategoriesNames;
 	private List<Cours> tousLesCours;
+	private List<Cours> tousLesCoursPubliques = new ArrayList<Cours>();
+	private List<String> emails;
 
 	Logger logger = Logger.getLogger(Controlleur.class);
 
@@ -72,41 +80,66 @@ public class Controlleur {
 		leconDAO = SingletonDAO.getLeconDAO();
 		categorieDAO = SingletonDAO.getCategoriedao();
 		motCleDAO = SingletonDAO.getMotcledao();
+		userDAO = SingletonDAO.getUserdao();
 		motCleNames = (ArrayList<String>) motCleDAO.findAllMotsClesNames();
 		allCategoriesNames = categorieDAO.findAllCategoriesNames();
 		tousLesCours = (ArrayList<Cours>) coursDAO.findAll();
+		for (Cours cours : tousLesCours) {
+			if (cours.getStatus() == StatusCours.PUBLIQUE)
+				tousLesCoursPubliques.add(cours);
+		}
+		
+		emails = userDAO.findAllEmails();
 	}
 
-	@RequestMapping(value = "/index" )
+	@RequestMapping(value = "/index")
 	public String index(Model model, HttpServletRequest request) {
-        
-		System.out.println(request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath());
+
+		System.out.println(request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+				+ request.getContextPath());
 		return "index";
 	}
 
-	@RequestMapping(value = "/AccesPageajoutCours")
-	public String welcome(Model model) {
+	@RequestMapping(value = "/prof/AccesPageajoutCours")
+	public String welcome(Model model, HttpServletRequest req) {
 
 		MyModel myModel = new MyModel();
+		Gson gson = new Gson();
+		String emailsJSON = gson.toJson(emails);
+		myModel.setEmailsJSON(emailsJSON);
+		System.out.println("voilàà "+ emailsJSON );
 
 		myModel.setAllCategoriesNames(allCategoriesNames);
 		myModel.setAllmotsCles(motCleNames);
 
+		
 		model.addAttribute("myModel", myModel);
 		return "ajouterCours";
 	}
 
-	@RequestMapping(value = "/voirTousLesCours")
-	public String tousLesCours(Model model) {
+	@RequestMapping(value = "/prof/voirTousLesCours")
+	public String tousLesCours(Model model, HttpServletRequest req) {
+		List<Cours> coursProf;
+		coursProf = coursDAO.findByProf((User) req.getSession().getAttribute("user"));
 
-		model.addAttribute("tousLesCours", tousLesCours);
+		model.addAttribute("tousLesCours", coursProf);
 		AjoutChapitreModel ajoutChapModel = new AjoutChapitreModel();
 		model.addAttribute("ajoutChapModel", ajoutChapModel);
-		return "tousLesCours";
+		return "allCoursesProf";
 	}
 
-	@RequestMapping(value = "/ajoutCours", method = RequestMethod.POST)
-	public String ajoutCours(@ModelAttribute("myModel") @Valid MyModel myModel, BindingResult result, ModelMap model) throws Exception {
+	@RequestMapping(value = "/apprenant/voirCoursPubliques")
+	public String tousLesCoursPubliques(Model model, HttpServletRequest req) {
+
+		model.addAttribute("tousLesCours", tousLesCoursPubliques);
+		AjoutChapitreModel ajoutChapModel = new AjoutChapitreModel();
+		model.addAttribute("ajoutChapModel", ajoutChapModel);
+		return "allCoursesProf";
+	}
+
+	@RequestMapping(value = "/prof/ajoutCours", method = RequestMethod.POST)
+	public String ajoutCours(@ModelAttribute("myModel") @Valid MyModel myModel, BindingResult result, ModelMap model,
+			HttpServletRequest req) throws Exception {
 		if (result.hasErrors()) {
 
 			myModel.setAllCategoriesNames(allCategoriesNames);
@@ -117,8 +150,11 @@ public class Controlleur {
 		}
 
 		else {
+			User prof = (User) req.getSession().getAttribute("user");
 
 			Cours cours = new Cours();
+			cours.setProf(prof);
+
 			CategorieCours cat;
 			cat = categorieDAO.findByName(myModel.getCategorieName());
 			cours.setCategorie(cat);
@@ -146,9 +182,28 @@ public class Controlleur {
 			String objectifsOutput1 = myModel.getObjectifs().replace("\n", "<br />\n" + "* ");
 			String objectifsOutput2 = "* " + objectifsOutput1;
 			cours.setObjectifs(objectifsOutput2);
-
+			
+			//TODO trouver tous les Etudiants à partir de leurs emails et faire cours.etudiants = etudiants;
+			String[] emailsList = myModel.getEmails().split(",");
+			
+			List<User> etudiants = new ArrayList<User>();
+			for(int i =0; i<emailsList.length-1; i++){
+				User etudiant  = userDAO.getUserByEmail(emailsList[i].trim());
+				etudiants.add(etudiant);
+			}
+			
+			//cours.setEtudiantsAutorises(etudiants);
 			coursDAO.create(cours);
 			tousLesCours.add(cours);
+			
+			
+			for(int j = 0; j<etudiants.size(); j++){
+				User etudiant = etudiants.get(j);
+				etudiant.getCoursAutorises().add(cours);
+				userDAO.edit(etudiant);
+				
+			}
+			
 			model.addAttribute("cours", cours);
 			return "apresAjout";
 		}
@@ -167,7 +222,7 @@ public class Controlleur {
 
 	}
 
-	@RequestMapping(value = "/ajoutChapitre")
+	@RequestMapping(value = "/prof/ajoutChapitre")
 	public String dbAjoutChapitre(@RequestParam("cours") Long coursId,
 			@ModelAttribute("ajoutChapModel") @Valid AjoutChapitreModel ajoutChapModel, BindingResult result,
 			ModelMap model) throws Exception {
@@ -183,7 +238,7 @@ public class Controlleur {
 			List<FieldError> errors = result.getFieldErrors();
 			model.addAttribute("errors", errors);
 
-			return "tousLesCours";
+			return "allCoursesProf";
 		}
 
 		else {
@@ -203,15 +258,27 @@ public class Controlleur {
 			model.addAttribute("tousLesCours", tousLesCours);
 			AjoutChapitreModel ajoutChapModell = new AjoutChapitreModel();
 			model.addAttribute("ajoutChapModel", ajoutChapModell);
-			return "tousLesCours";
+			return "allCoursesProf";
 		}
 	}
 
-	@RequestMapping(value = "/contenuCours")
+	@RequestMapping(value = "/prof/contenuCours")
 	public String demandeVoirContenuCours(@RequestParam("cours") Long coursId, Model model) {
-		
+
 		model.addAttribute("cours_choisis", coursId);
-		
+
+		Cours cours = coursDAO.findById(coursId);
+		Collection<Chapitre> chapitresCours = cours.getChapitres();
+		model.addAttribute("cours", cours);
+		model.addAttribute("chapitresCours", chapitresCours);
+		return "contenuCours2";
+	}
+	
+	@RequestMapping(value = "/apprenant/contenuCours")
+	public String demandeVoirContenuCoursApprenant(@RequestParam("cours") Long coursId, Model model) {
+
+		model.addAttribute("cours_choisis", coursId);
+
 		Cours cours = coursDAO.findById(coursId);
 		Collection<Chapitre> chapitresCours = cours.getChapitres();
 		model.addAttribute("cours", cours);
@@ -220,7 +287,7 @@ public class Controlleur {
 	}
 
 	// ajouterLeconForm
-	@RequestMapping(value = "/ajouterLeconForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/prof/ajouterLeconForm", method = RequestMethod.GET)
 	public String demandeAjoutLecon(@RequestParam("chapitre") Long chapitreId, Model model) {
 
 		model.addAttribute("chapitre_choisi", chapitreId);
@@ -232,7 +299,7 @@ public class Controlleur {
 
 	}
 
-	@RequestMapping(value = "/dbAjoutLecon")
+	@RequestMapping(value = "/prof/dbAjoutLecon")
 	public String dbAjoutLecon(@ModelAttribute("ajoutLeconModel") @Valid AjoutLeconModel ajoutLeconModel,
 			BindingResult result, ModelMap model) throws Exception {
 		if (result.hasErrors()) {
@@ -246,8 +313,8 @@ public class Controlleur {
 			Chapitre chapitre = chapitreDAO.findById(chpId);
 
 			Lecon lecon = new Lecon(ajoutLeconModel.getName(), ajoutLeconModel.getLienVideo());
-			
-//			lecon.setContent(ajoutLeconModel.getContent());
+
+			// lecon.setContent(ajoutLeconModel.getContent());
 			lecon.setChapitre(chapitre);
 			leconDAO.create(lecon);
 
@@ -257,7 +324,7 @@ public class Controlleur {
 		}
 	}
 
-	@RequestMapping(value = "/contenuChapitre")
+	@RequestMapping(value = "/prof/contenuChapitre")
 	public String demandeVoirContenuChapitre(@RequestParam("chapitre") Long chapId, ModelMap model) {
 		Chapitre chapitre = chapitreDAO.findById(chapId);
 		Collection<Lecon> leconsDuChapitre = chapitre.getLecons();
@@ -266,13 +333,13 @@ public class Controlleur {
 		model.addAttribute("leconsDuChapitre", leconsDuChapitre);
 
 		ModifierChapitreModel myModel = new ModifierChapitreModel();
-		
+
 		myModel.setOrdreDuChapitre(chapitre.getOrdreDuChapitre());
 		myModel.setName(chapitre.getNom());
 		myModel.setDescription(chapitre.getDescription());
-		
+
 		model.addAttribute("myModel", myModel);
-		
+
 		return "contenuChapitre2";
 	}
 
@@ -316,10 +383,10 @@ public class Controlleur {
 		}
 
 		else {
-            
+
 			long id = (Long) model.get("cours_choisis");
 			Cours cours = coursDAO.findById(id);
-			//tousLesCours.remove(cours);
+			// tousLesCours.remove(cours);
 			CategorieCours cat;
 			cat = categorieDAO.findByName(myModel.getCategorieName());
 			cours.setCategorie(cat);
@@ -348,42 +415,39 @@ public class Controlleur {
 			cours.setObjectifs(objectifsOutput2);
 
 			coursDAO.edit(cours);
-			//tousLesCours.add(cours);
-			
+			// tousLesCours.add(cours);
+
 			tousLesCours = (ArrayList<Cours>) coursDAO.findAll();
-			
+
 			model.addAttribute("cours", cours);
-			
+
 			model.addAttribute("tousLesCours", tousLesCours);
 			AjoutChapitreModel ajoutChapModel = new AjoutChapitreModel();
 			model.addAttribute("ajoutChapModel", ajoutChapModel);
 			return "tousLesCours";
 		}
 	}
-	
-	
+
 	@RequestMapping(value = "/AccesPageModifierChapitre")
 	public String demandeAccesPageModifierChapitre(ModelMap model) {
 		long idChap = (Long) model.get("chapitre_choisi");
 		Chapitre chapitre = chapitreDAO.findById(idChap);
 
 		ModifierChapitreModel myModel = new ModifierChapitreModel();
-		
+
 		myModel.setOrdreDuChapitre(chapitre.getOrdreDuChapitre());
 		myModel.setName(chapitre.getNom());
 		myModel.setDescription(chapitre.getDescription());
-		
+
 		model.addAttribute("myModel", myModel);
 
 		return "modifierChapitre";
 	}
 
-	
-	
-	//modifierChapitre
+	// modifierChapitre
 	@RequestMapping(value = "/modifierChapitre")
-	public String dbModifierChapitre(@ModelAttribute("myModel") @Valid ModifierChapitreModel modifierChapModel, BindingResult result,
-			ModelMap model) {
+	public String dbModifierChapitre(@ModelAttribute("myModel") @Valid ModifierChapitreModel modifierChapModel,
+			BindingResult result, ModelMap model) {
 
 		if (result.hasErrors()) {
 
@@ -401,14 +465,13 @@ public class Controlleur {
 
 		else {
 
-			
 			long idChap = (Long) model.get("chapitre_choisi");
 			Chapitre chapitre = chapitreDAO.findById(idChap);
-			
+
 			chapitre.setOrdreDuChapitre(modifierChapModel.getOrdreDuChapitre());
 			chapitre.setNom(modifierChapModel.getName());
 			chapitre.setDescription(modifierChapModel.getDescription());
-			
+
 			chapitreDAO.edit(chapitre);
 
 			model.addAttribute("messageAjoutChap", "chapitre modifié avec succès");
@@ -419,6 +482,36 @@ public class Controlleur {
 			return "tousLesCours";
 		}
 	}
+
+	@RequestMapping(value = "/prof/rendrePublique")
+	public String rendrePublique(@RequestParam("cours") Long coursId, Model model) {
+
+		model.addAttribute("cours_choisis", coursId);
+
+		Cours cours = coursDAO.findById(coursId);
+		cours.setStatus(StatusCours.PUBLIQUE);
+		coursDAO.edit(cours);
+		System.out.println("yahooooooooooooooooooooo");
+		return "index";
+	}
+	
+	
+	@RequestMapping(value = "apprenant/voirTousLesCoursAutorises")
+	public String tousLesCoursAutorises(Model model, HttpServletRequest req) {
+		List<Cours> coursAutorises;
+		User apprenant = (User) req.getSession().getAttribute("user");
+		
+		coursAutorises = (List<Cours>) apprenant.getCoursAutorises();
+
+		model.addAttribute("tousLesCoursAutorises", coursAutorises);
+		return "allAutorizedCoursesApprenant";
+	}
+	
+	
+	
+	
+	
+	
 	
 
 }

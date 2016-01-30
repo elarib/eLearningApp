@@ -35,6 +35,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 @NamedQueries({
 	@NamedQuery(name = "Cours.findByName", query = "SELECT cours FROM Cours cours WHERE cours.name= :name"),
 	@NamedQuery(name = "Cours.findByNameAndDesc", query = "SELECT cours FROM Cours cours WHERE cours.name= :name and cours.description=  :description"),
+	@NamedQuery(name = "Cours.findByProf", query = "SELECT cours FROM Cours cours WHERE cours.prof= :prof"),
 
 })
 @Entity
@@ -52,6 +53,7 @@ public class Cours implements Serializable {
 		this.prerequis = prerequis;
 		this.objectifs = objectifs;
 	}
+	
 
 
 
@@ -78,6 +80,11 @@ public class Cours implements Serializable {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "cours")
 	private Collection<Chapitre> chapitres;
+	@ManyToOne
+	@JoinColumn(name="prof_id")
+	private User prof;
+	@ManyToMany(mappedBy = "coursAutorises", fetch = FetchType.LAZY)
+	private Collection<User> etudiantsAutorises;
 	
 	public Long getId() {
 		return id;
@@ -141,7 +148,18 @@ public class Cours implements Serializable {
 	public void setChapitres(Collection<Chapitre> chapitres) {
 		this.chapitres = chapitres;
 	}
-	
+	public User getProf() {
+		return prof;
+	}
+	public void setProf(User prof) {
+		this.prof = prof;
+	}
+	public Collection<User> getEtudiantsAutorises() {
+		return etudiantsAutorises;
+	}
+	public void setEtudiantsAutorises(Collection<User> etudiantsAutorises) {
+		this.etudiantsAutorises = etudiantsAutorises;
+	}
 	
 	
 }

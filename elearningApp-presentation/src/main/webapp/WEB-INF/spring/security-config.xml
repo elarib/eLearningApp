@@ -15,7 +15,8 @@
 
 
 		<intercept-url pattern="/" access="permitAll" />
-		<intercept-url pattern="/resources/**" access="hasAnyRole('ROLE_ADMIN','ROLE_APPRENANT')" />
+		<intercept-url pattern="/resources/**"
+			access="hasAnyRole('ROLE_ADMIN','ROLE_APPRENANT')" />
 		<intercept-url pattern="/error" access="permitAll" />
 		<intercept-url pattern="/confirm" access="permitAll" />
 		<intercept-url pattern="/login" access="permitAll" />
@@ -33,6 +34,12 @@
 		<intercept-url pattern="/**"
 			access="hasAnyRole('ROLE_ADMIN','ROLE_APPRENANT')" />
 
+		<!-- Cours -->
+		
+		<!-- END Cours -->
+
+
+
 		<form-login login-page="/login" username-parameter="ssoId"
 			password-parameter="password" authentication-failure-handler-ref="authenticationFailureHandler"
 			authentication-success-handler-ref="myAuthenticationSuccessHandler" />
@@ -42,7 +49,7 @@
 
 		<csrf />
 	</http>
-	
+
 
 
 
