@@ -11,13 +11,13 @@
 		<tr>
 			<td>Ajouter un cours</td>
 			<td><input type="button"
-				onclick="location.href='<c:url value = '/prof/AccesPageajoutCours'/>'"
+				onclick="location.href='<c:url value = '/prof/cours/AccesPageajoutCours'/>'"
 				value="Ajouter un cours"></td>
 		</tr>
 		<tr>
 			<td>Gérer les cours qu'il a ajoutés</td>
 			<td><input type="button"
-				onclick="location.href='<c:url value = '/prof/voirTousLesCours'/>'"
+				onclick="location.href='<c:url value = '/prof/cours/voirTousLesCours'/>'"
 				value="Voir tous les cours"></td>
 		</tr>
 	</table>

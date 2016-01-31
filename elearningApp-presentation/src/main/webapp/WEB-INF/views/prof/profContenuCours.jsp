@@ -40,9 +40,9 @@
 <body>
 
 	<ul class="breadcrumb">
-		<li class="active"><a href="index">Home</a></li>
+		<li class="active"><a href="/elearningApp-presentation/prof/cours/index">Home</a></li>
 		<li class="active"><a href="#">Profil</a></li>
-		<li class="active"><a href="voirTousLesCours">Gérer les cours</a></li>
+		<li class="active"><a href="/elearningApp-presentation/prof/cours/voirTousLesCours">Gérer les cours</a></li>
 	</ul>
 
 	<div class="container">
@@ -130,7 +130,7 @@
 											<strong>${chapitre.nom}</strong>
 										</h4>
 										<p>${chapitre.description }</p>
-										<f:form method="get" action="contenuChapitre">
+										<f:form method="get" action="/elearningApp-presentation/prof/cours/chapitres/contenuChapitre">
 											<input type=hidden id="thisField" name="chapitre"
 												value="${chapitre.id }" />
 											<td><button type="submit" class="btn btn-sm btn-primary">

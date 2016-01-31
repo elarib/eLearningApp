@@ -27,7 +27,7 @@
 				<tr>
 					<td><h4 class="text-muted" style="font-weight: bold;">Tous
 							les cours</h4></td>
-					<td><f:form action="AccesPageajoutCours">
+					<td><f:form action="/elearningApp-presentation/prof/cours/AccesPageajoutCours">
 							<input type="submit" value="ajouter un cours"
 								class="btn btn-warning" style="float: right;" />
 						</f:form></td>
@@ -69,7 +69,7 @@
 										data-target="#myModal">ajouter un chapitre</button>
 								</td>
 							</f:form>
-							<f:form method="get" action="rendrePublique">
+							<f:form method="get" action="/elearningApp-presentation/prof/cours/rendrePublique">
 								<input type=hidden id="thisField" name="cours"
 									value="${cours.id }" />
 								<td><input type="submit" value="Rendre Publique"
@@ -97,7 +97,7 @@
 					<div class="modal-body">
 
 						<f:form modelAttribute="ajoutChapModel" method="post"
-							action="ajoutChapitre">
+							action="/elearningApp-presentation/prof/cours/chapitres/ajoutChapitre">
 
 							<div class="form-group">
 								<label for="ordre">Ordre :</label>

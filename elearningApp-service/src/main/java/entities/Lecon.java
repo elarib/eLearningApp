@@ -38,6 +38,13 @@ public class Lecon implements Serializable {
 	}
 
 
+	public Lecon(String nom, String lienVideo, String content) {
+		super();
+		this.nom = nom;
+		this.content = content;
+		this.lienVideo = lienVideo;
+	}
+
 	public Long getId() {
 		return id;
 	}

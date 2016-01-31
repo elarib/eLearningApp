@@ -81,9 +81,9 @@
 
 
 	<ul class="breadcrumb">
-		<li class="active"><a href="index">Home</a></li>
+		<li class="active"><a href="/elearningApp-presentation/prof/cours/index">Home</a></li>
 		<li class="active"><a href="#">Profil</a></li>
-		<li class="active"><a href="voirTousLesCours">Gérer les cours</a></li>
+		<li class="active"><a href="/elearningApp-presentation/prof/cours/voirTousLesCours">Gérer les cours</a></li>
 	</ul>
 
 	<div class=" col-md-3">
@@ -93,7 +93,7 @@
 	</div>
 	<div class=" col-md-7">
 		<div class="row">
-			<f:form modelAttribute="myModel" method="post" action="ajoutCours">
+			<f:form modelAttribute="myModel" method="post" action="/elearningApp-presentation/prof/cours/ajoutCours">
 
 				<div class="form-group">
 

@@ -15,7 +15,7 @@
 
 <body>
 	<ul class="breadcrumb">
-		<li class="active"><a href="index">Home</a></li>
+		<li class="active"><a href="/elearningApp-presentation/prof/cours/index">Home</a></li>
 		<li class="active"><a href="#">Profil</a></li>
 		<li class="active">Gérer les cours</li>
 	</ul>
@@ -46,7 +46,7 @@
 							<td>${cours.name}</td>
 							<td>${cours.dateAjout }</td>
 
-							<f:form method="get" action="contenuCours">
+							<f:form method="get" action="/elearningApp-presentation/apprenant/apprenantContenuCours">
 								<input type=hidden id="thisField" name="cours"
 									value="${cours.id }" />
 								<td><input type="submit" value="voir le contenu"

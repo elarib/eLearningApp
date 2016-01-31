@@ -27,7 +27,7 @@
 
 	<div>
 		<f:form modelAttribute="ajoutLeconModel" method="post"
-			action="dbAjoutLecon">
+			action="/elearningApp-presentation/prof/cours/chapitres/lecons/dbAjoutLecon">
 
 			<table>
 

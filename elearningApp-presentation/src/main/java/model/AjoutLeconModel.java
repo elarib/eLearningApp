@@ -23,6 +23,13 @@ public class AjoutLeconModel {
 		this.lienVideo = lienVideo;
 	}
 
+	public AjoutLeconModel(String name, String lienVideo, String content) {
+		super();
+		this.name = name;
+		this.lienVideo = lienVideo;
+		this.content = content;
+	}
+
 	public String getLienVideo() {
 		return lienVideo;
 	}

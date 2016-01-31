@@ -25,7 +25,7 @@
 		<intercept-url pattern="/signup" access="permitAll" />
 		<intercept-url pattern="/reenvoyerConfirmation" access="permitAll" />
 
-		<intercept-url pattern="/signup" access="isAnonymous()" />
+	
 		<intercept-url pattern="/profil/edit"
 			access="hasAnyRole('ROLE_ADMIN','ROLE_APPRENANT')" />
 		<intercept-url pattern="/profil**"

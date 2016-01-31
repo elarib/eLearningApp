@@ -40,9 +40,9 @@
 <body>
 
 	<ul class="breadcrumb">
-		<li class="active"><a href="index">Home</a></li>
+		<li class="active"><a href="/elearningApp-presentation/prof/cours/index">Home</a></li>
 		<li class="active"><a href="#">Profil</a></li>
-		<li class="active"><a href="voirTousLesCours">Gérer les cours</a></li>
+		<li class="active"><a href="/elearningApp-presentation/prof/cours/voirTousLesCours">Gérer les cours</a></li>
 	</ul>
 
 	<div class="container">
@@ -81,7 +81,7 @@
 						<div class="col-md-12 center">
 							<ul>
 								<li>
-									<f:form action="AccesPageModifierChapitre">
+									<f:form action="/elearningApp-presentation/prof/cours/chapitres/AccesPageModifierChapitre">
 										<button type="button" class="btn btn-warning" data-toggle="modal"
 											data-target="#myModal" style="float: right;">modifier le chapitre</button>
 									</f:form>
@@ -99,7 +99,7 @@
 						<h4 class="heading-primary">
 							<strong>Lecons:</strong>
 						</h4>
-						<f:form method="get" action="ajouterLeconForm">
+						<f:form method="get" action="/elearningApp-presentation/prof/cours/chapitres/lecons/ajouterLeconForm">
 								<input type=hidden id="thisField" name="chapitre"
 									value="${chapitre.id }" />
 								<button type="submit" value="ajouter une leçon"
@@ -107,7 +107,7 @@
 							</f:form>
 						<div class="list list-inline list-icons">
 							<c:forEach var="lecon" items="${leconsDuChapitre}">
-								<f:form class="col-lg-offset-3 col-lg-6" method="get" action="contenuLecon">
+								<f:form class="col-lg-offset-3 col-lg-6" method="get" action="/elearningApp-presentation/prof/cours/chapitres/lecons/contenuLecon">
 									<input type=hidden id="thisField" name="lecon"
 										value="${lecon.id }" />
 									<div class="panel panel-success ">
@@ -140,7 +140,7 @@
 					<div class="modal-body">
 
 						<f:form modelAttribute="myModel" method="post"
-							action="modifierChapitre">
+							action="/elearningApp-presentation/prof/cours/chapitres/modifierChapitre">
 
 							<div class="form-group">
 								<label for="ordre">Ordre :</label>

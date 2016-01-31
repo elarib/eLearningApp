@@ -80,7 +80,7 @@
 							<td>${chapitre.description }</td>
 
 
-							<f:form method="get" action="contenuChapitre">
+							<f:form method="get" action="prof/cours/chapitres/contenuChapitre">
 								<input type=hidden id="thisField" name="chapitre"
 									value="${chapitre.id }" />
 								<td><input type="submit" value="voir le contenu"

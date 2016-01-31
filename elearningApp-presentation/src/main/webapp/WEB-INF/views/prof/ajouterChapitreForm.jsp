@@ -4,8 +4,8 @@
 <body>
 	<h2>Ajouter un chapitre</h2>
 	<div>
-		<f:form modelAttribute="myModel" method="post"
-			action="modifierChapitre">
+		<f:form modelAttribute="ajoutChapModel" method="post"
+			action="/elearningApp-presentation/prof/cours/chapitres/ajoutChapitre">
 			<table>
 				<tr>
 					<td>Ordre :</td>
@@ -24,11 +24,12 @@
 				</tr>
 
 				<tr>
-					<td><input type="submit" value="Modifier le chapitre" /></td>
+					<td><input type="submit" value="OK" /></td>
 				</tr>
 			</table>
 		</f:form>
 		
+		 <output style="color: green;" >${messageAjoutChap }</output>
 	</div>
 
 </body>
