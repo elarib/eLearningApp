@@ -7,31 +7,31 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="<c:url value="/resources/vendor/font-awesome/css/font-awesome.css" />">
+	href="/elearningApp-presentation/resources/vendor/font-awesome/css/font-awesome.css" />
 <link rel="stylesheet"
-	href="resources/vendor/simple-line-icons/css/simple-line-icons.css">
+	href="/elearningApp-presentation/resources/vendor/simple-line-icons/css/simple-line-icons.css">
 <link rel="stylesheet"
-	href="resources/vendor/owl.carousel/assets/owl.carousel.min.css">
+	href="/elearningApp-presentation/resources/vendor/owl.carousel/assets/owl.carousel.min.css">
 <link rel="stylesheet"
-	href="resources/vendor/owl.carousel/assets/owl.theme.default.min.css">
+	href="/elearningApp-presentation/resources/vendor/owl.carousel/assets/owl.theme.default.min.css">
 <link rel="stylesheet"
-	href="resources/vendor/magnific-popup/magnific-popup.css">
+	href="/elearningApp-presentation/resources/vendor/magnific-popup/magnific-popup.css">
 
 <!-- Theme CSS -->
-<link rel="stylesheet" href="resources/css/theme.css">
-<link rel="stylesheet" href="resources/css/theme-elements.css">
-<link rel="stylesheet" href="resources/css/theme-blog.css">
-<link rel="stylesheet" href="resources/css/theme-shop.css">
-<link rel="stylesheet" href="resources/css/theme-animate.css">
+<link rel="stylesheet" href="/elearningApp-presentation/resources/css/theme.css">
+<link rel="stylesheet" href="/elearningApp-presentation/resources/css/theme-elements.css">
+<link rel="stylesheet" href="/elearningApp-presentation/resources/css/theme-blog.css">
+<link rel="stylesheet" href="/elearningApp-presentation/resources/css/theme-shop.css">
+<link rel="stylesheet" href="/elearningApp-presentation/resources/css/theme-animate.css">
 
 <!-- Skin CSS -->
-<link rel="stylesheet" href="resources/css/skins/default.css">
+<link rel="stylesheet" href="/elearningApp-presentation/resources/css/skins/default.css">
 
 <!-- Theme Custom CSS -->
-<link rel="stylesheet" href="resources/css/custom.css">
+<link rel="stylesheet" href="/elearningApp-presentation/resources/css/custom.css">
 
 <!-- Head Libs -->
-<script src="resources/vendor/modernizr/modernizr.js"></script>
+<script src="/elearningApp-presentation/resources/vendor/modernizr/modernizr.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script

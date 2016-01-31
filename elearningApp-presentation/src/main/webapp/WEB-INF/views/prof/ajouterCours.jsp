@@ -1,5 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+<%@page contentType="text/html; charset=UTF-8" %>
 <html>
 <head>
 <meta charset="utf-8">
@@ -75,15 +76,15 @@
 
 </head>
 <body>
-
+	
 	<div id="emailsJSON">${myModel.emailsJSON }</div>
 
-
+    <%@ include file="headerProf.html" %>
 
 	<ul class="breadcrumb">
 		<li class="active"><a href="/elearningApp-presentation/prof/cours/index">Home</a></li>
 		<li class="active"><a href="#">Profil</a></li>
-		<li class="active"><a href="/elearningApp-presentation/prof/cours/voirTousLesCours">Gérer les cours</a></li>
+		<li class="active"><a href="/elearningApp-presentation/prof/cours/voirTousLesCours">GÃ©rer les cours</a></li>
 	</ul>
 
 	<div class=" col-md-3">
@@ -112,7 +113,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="categorieName">Catégorie :</label>
+					<label for="categorieName">CatÃ©gorie :</label>
 					<f:select path="categorieName" id="categorieName"
 						class="form-control">
 						<f:options items="${myModel.allCategoriesNames}" />
@@ -121,7 +122,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="motsClesChoisis">Mots Clés :</label>
+					<label for="motsClesChoisis">Mots ClÃ©s :</label>
 					<f:select path="motsClesChoisis" multiple="true"
 						id="motsClesChoisis" class="form-control">
 						<f:options items="${myModel.allmotsCles}" />
