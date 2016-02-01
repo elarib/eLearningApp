@@ -7,7 +7,9 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>elearningApp-service</module>
+		
 		<module>elearningApp-presentation</module>
+		
 	</modules>
 	<properties>
 		<org.springframework-version>4.2.0.RELEASE</org.springframework-version>

@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import dao.SingletonDAO;
 import dao.UserDAO;
+import dao.impl.UserDetailsDAOImpl;
 import entities.Role;
 import entities.User;
 import exception.AuthenticationException;
@@ -163,7 +164,7 @@ public class LogInUser {
 		return sb.toString();
 
 	}
-
+	private static UserDetailsDAOImpl userDetailsDAO = SingletonDAO.getUserdetailsdao();
 	@RequestMapping(value = "/signup/SendConfirmationEmailForNewApprenantController.do", method = RequestMethod.POST)
 	public String doSendEmail(HttpServletRequest request) throws Exception {
 
@@ -174,7 +175,7 @@ public class LogInUser {
 		Date date = new Date();
 
 		user.setDateInscription(dateFormat.format(date));
-		
+		String pass = user.getMotDePasse();
 		// Hasher le Mot de passe et Ajouter le Role d'apprenant
 		System.out.println("Password : "+user.getMotDePasse()+" Hashed Password : "+new BCryptPasswordEncoder().encode(user.getMotDePasse()));
 		user.setMotDePasse(new BCryptPasswordEncoder().encode(user.getMotDePasse()));
@@ -186,6 +187,11 @@ public class LogInUser {
 		System.out.println(user);
 		try {
 			userDao.create(user);
+			entities.UserDetails userDetails = new entities.UserDetails();
+			userDetails.setName(user.getUserName());
+			userDetails.setPassword(pass);
+			userDetails.setPostCount(0);
+			userDetailsDAO.create(userDetails);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			throw new AuthenticationException("Email ou Username est déjà inscrit ! "+e.getMessage());
