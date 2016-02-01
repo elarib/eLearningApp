@@ -10,6 +10,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css" />">
+
+<%@include file="tags/resourcesfiles.jsp"%>
 <style type="text/css">
 body {
 	background: #F1F3FA;
@@ -121,18 +123,8 @@ body {
 </style>
 </head>
 <body>
+	<%@include file="tags/header.jsp"%>
 
-
-
-
-
-
-	<p>
-		<a href="<c:url value="/profil/edit"/>">Modifier Mes Infos</a>
-	</p>
-
-
-	<a href="<c:url value="/logout"/>">Logout</a>
 
 
 
@@ -156,7 +148,8 @@ body {
 					<!-- END SIDEBAR USER TITLE -->
 					<!-- SIDEBAR BUTTONS -->
 					<div class="profile-userbuttons">
-						<a href="<c:url value="/logout" />" class="btn btn-danger btn-sm" >Log out</a>
+						<a href="<c:url value="/logout" />" class="btn btn-danger btn-sm">Log
+							out</a>
 					</div>
 					<!-- END SIDEBAR BUTTONS -->
 					<!-- SIDEBAR MENU -->
@@ -165,8 +158,8 @@ body {
 							<li class="active"><a href="#"> <i
 									class="glyphicon glyphicon-home"></i> Overview
 							</a></li>
-							<li><a href="<c:url value="/profil/edit" />"> <i class="glyphicon glyphicon-user"></i>
-									Changer votre infos
+							<li><a href="<c:url value="/profil/edit" />"> <i
+									class="glyphicon glyphicon-user"></i> Changer votre infos
 							</a></li>
 							<li><a href="#" target="_blank"> <i
 									class="glyphicon glyphicon-ok"></i> Tasks

@@ -79,7 +79,7 @@
 	
 	<div id="emailsJSON">${myModel.emailsJSON }</div>
 
-    <%@ include file="headerProf.html" %>
+<%--     <%@ include file="headerProf.html" %> --%>
 
 	<ul class="breadcrumb">
 		<li class="active"><a href="/elearningApp-presentation/prof/cours/index">Home</a></li>
