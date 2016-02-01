@@ -5,82 +5,72 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	href="/elearningApp-presentation/resources/vendor/bootstrap/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	src="/elearningApp-presentation/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 </head>
 
 <body>
+	<%@ include file="headerProf.jsp"%>
 	<ul class="breadcrumb">
 		<li class="active"><a href="index">Home</a></li>
 		<li class="active"><a href="#">Profil</a></li>
 		<li class="active">Gérer les cours</li>
 	</ul>
-
 	<div class="col-md-1"></div>
 	<div class=" col-md-10">
-		<div class="row" style="height: 70%; overflow: auto;">
-			<table class="table">
-				<tr>
-					<td><h4 class="text-muted" style="font-weight: bold;">Tous
-							les cours</h4></td>
-					<td><f:form action="/elearningApp-presentation/prof/cours/AccesPageajoutCours">
-							<input type="submit" value="ajouter un cours"
-								class="btn btn-warning" style="float: right;" />
-						</f:form></td>
-				</tr>
-			</table>
-			<table class="table table-striped table-bordered">
-				<thead>
-					<tr class="success">
-						<th>ID</th>
-						<th>Titre</th>
-						<th>Date d'ajout</th>
-						<th>Contenu</th>
-						<th>Nouveau chapitre</th>
-						<th>Rendre publique</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="cours" items="${tousLesCours}">
-						<tr>
-							<td>${cours.id}</td>
-							<td>${cours.name}</td>
-							<td>${cours.dateAjout }</td>
+		<div class="row"
+			style="height: 70%; overflow: auto; margin: 50px auto">
+			<c:forEach var="cours" items="${tousLesCours}">
+				<div class="col-lg-3 col-md-3">
+					<div class="panel panel-info">
+						<div class="panel-heading">${cours.name}</div>
+						<div class="panel-body">
+							<p style="font-size: large;">${cours.description }</p>
+							<div class="row">
+								<div style="position: absolute; bottom: 10%; right: 40%;">
+									<f:form method="get" action="contenuCours">
+										<input type=hidden id="thisField" name="cours"
+											value="${cours.id }" />
+										<button type="submit" class="btn btn-warning btn-sm"
+											title="voir le contenu">
+											<span class="glyphicon glyphicon-option-horizontal"></span>
+										</button>
+									</f:form>
+								</div>
+								<div style="position: absolute; bottom: 10%; right: 25%;">
+									<f:form>
+										<input type=hidden id="thisField" name="cours"
+											value="${cours.id }" />
 
-							<f:form method="get" action="contenuCours">
-								<input type=hidden id="thisField" name="cours"
-									value="${cours.id }" />
-								<td><input type="submit" value="voir le contenu"
-									class="btn btn-link" /></td>
-							</f:form>
+										<button type="button" onclick="setIdModal(${cours.id })"
+											class="btn btn-primary btn-sm " data-toggle="modal"
+											data-target="#myModal" title="Ajouter un chapitre">
+											<span class="glyphicon glyphicon-plus"></span>
+										</button>
+									</f:form>
+								</div>
+								<div style="position: absolute; bottom: 10%; right: 10%;">
+									<f:form method="get"
+										action="/elearningApp-presentation/prof/cours/rendrePublique">
+										<input type=hidden id="thisField" name="cours"
+											value="${cours.id }" />
+										<td><button type="submit" value="Rendre Publique"
+												class="btn btn-success btn-sm" title="Rendre le cours publique">
+												<span class="glyphicon glyphicon-globe "></span>
+											</button></td>
+									</f:form>
+								</div>
+							</div>
 
-							<f:form>
-								<input type=hidden id="thisField" name="cours"
-									value="${cours.id }" />
-								<!-- <td><input type="submit" value="ajouter un chapitre" 
-										class="btn btn-link" /></td> -->
-								<td>
-									<button type="button" onclick="setIdModal(${cours.id })"
-										class="btn btn-link" data-toggle="modal"
-										data-target="#myModal">ajouter un chapitre</button>
-								</td>
-							</f:form>
-							<f:form method="get" action="/elearningApp-presentation/prof/cours/rendrePublique">
-								<input type=hidden id="thisField" name="cours"
-									value="${cours.id }" />
-								<td><input type="submit" value="Rendre Publique"
-									class="btn btn-link" /></td>
-							</f:form>
-							
-							
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+
 		</div>
 
 
@@ -117,8 +107,8 @@
 
 
 							<input type="text" id="hiddenId" name="cours" hidden />
-							<button type="submit" class="btn btn-primary">Ajouter le
-								chapitre</button>
+							<button type="submit" class="btn btn-primary" title="tiiitle">Ajouter
+								le chapitre</button>
 
 
 						</f:form>

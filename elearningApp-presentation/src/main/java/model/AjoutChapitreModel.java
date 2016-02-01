@@ -10,10 +10,9 @@ public class AjoutChapitreModel {
 	@NotNull
 	private int ordreDuChapitre;
 	@NotNull
-	@Size(min = 5, max = 10)
 	private String name;
 	@NotNull
-	@Size(min = 10, max = 20)
+	@Size(max=2000)
 	private String description;
 	
 	public AjoutChapitreModel() {
