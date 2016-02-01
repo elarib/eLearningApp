@@ -48,16 +48,7 @@
 	src="/elearningApp-presentation/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-	<ul class="breadcrumb">
-		<li class="active"><a
-			href="/elearningApp-presentation/prof/cours/index">Home</a></li>
-		<li class="active"><a href="#">Profil</a></li>
-		<li class="active"><a
-			href="/elearningApp-presentation/prof/cours/voirTousLesCours">Gérer
-				les cours</a></li>
-	</ul>
-
+	<%@ include file="../tags/header.jsp" %>
 	<div class="container ">
 
 		<div class="row form-style1 ">

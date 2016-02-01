@@ -6,6 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="/elearningApp-presentation/resources/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/style2.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script
@@ -14,12 +16,8 @@
 </head>
 
 <body>
-	<%@ include file="headerProf.jsp"%>
-	<ul class="breadcrumb">
-		<li class="active"><a href="index">Home</a></li>
-		<li class="active"><a href="#">Profil</a></li>
-		<li class="active">Gérer les cours</li>
-	</ul>
+	<%@ include file="../tags/header.jsp"%>
+	
 	<!-- MESSAGES -->
 	<c:if test="${not empty messageAjoutChap}">
 		<output style="color: green;" class="bg-success">${messageAjoutChap }</output>
@@ -38,7 +36,8 @@
 		</c:forEach>
 	</table>
 	<!-- END MESSAGES -->
-	<div class="row" style="overflow: auto; margin: 50px auto">
+	<h2 style="text-align:center">Liste des cours</h2>
+	<div class="row form-style form-inside" style="overflow: auto; margin: 50px 5%">
 		<c:forEach var="cours" items="${tousLesCours}">
 			<div class="col-lg-4 col-md-4">
 				<div class="panel panel-primary">

@@ -111,7 +111,7 @@ public class LeconsProfController {
 			BindingResult result, ModelMap model) throws Exception {
 		if (result.hasErrors()) {
 
-			return "ajouterLeconForm";
+			return "prof/ajouterLeconForm";
 		}
 
 		else {

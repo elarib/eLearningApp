@@ -4,6 +4,8 @@
 <head>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/style2.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script
@@ -18,53 +20,41 @@
 </script>
 </head>
 <body>
-	<ul class="breadcrumb">
-		<li class="active"><a href="index">Home</a></li>
-		<li class="active"><a href="#">Profil</a></li>
-		<li class="active"><a href="voirTousLesCours">Gérer les cours</a></li>
-	</ul>
-	<h2>Ajouter une leçon</h2>
+	<%@ include file="../tags/header.jsp"%>
+	<h2 style="text-align:center">Ajouter une leçon</h2>
 
-	<div>
+	<div class="form-style form-inside">
 		<f:form modelAttribute="ajoutLeconModel" method="post"
 			action="/elearningApp-presentation/prof/cours/chapitres/lecons/dbAjoutLecon">
+				
+				<div class="form-group">
 
-			<table>
+					<label for="name">Titre :</label>
+					<f:input path="name" id="name" class="form-control"
+						placeholder="Titre" />
+					<f:errors path="name" style="color : red;"></f:errors>
+				</div>
+				
+				<div class="form-group">
 
-				<tr>
-					<td>Titre :</td>
-					<td><f:input path="name" /></td>
-					<td style="color: red;"><f:errors path="name"></f:errors></td>
-				</tr>
+					<label for="name">Contenu :</label>
+					<textarea id="myarea1">Test</textarea>
+				</div>
+				
+				<div class="form-group">
 
+					<label for="name">Lien vidéo :</label>
+					<f:input path="lienVideo" class="form-control"
+						placeholder="lien vidéo" />
+					<f:errors path="lienVideo"></f:errors>
+				</div>
+				
+				<f:input type="text" id="hiddenHTML" path="content"
+							hidden="true"></f:input>
+				<input type="submit" class="btn btn-success" value="Ajouter la leçon"
+						onclick="get_text()" />
 
-				<tr>
-					<td>Contenu :</td>
-					<td><textarea id="myarea1">Test</textarea></td>
-				</tr>
-
-
-				<tr>
-					<td>Lien vidéo :</td>
-					<td><f:input path="lienVideo" /></td>
-					<td style="color: red;"><f:errors path="lienVideo"></f:errors></td>
-				</tr>
-
-
-				<tr>
-					<td><f:input type="text" id="hiddenHTML" path="content"
-							hidden="true"></f:input></td>
-				<tr>
-				<tr>
-					<td><input type="submit" value="Ajouter la leçon"
-						onclick="get_text()" /></td>
-				</tr>
-
-				<tr>
-					<td><output style="color: green;">${messageAjoutLecon }</output></td>
-				</tr>
-
-			</table>
+				<output style="color: green;">${messageAjoutLecon }</output>
 		</f:form>
 
 	</div>
