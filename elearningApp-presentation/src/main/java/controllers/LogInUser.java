@@ -51,8 +51,8 @@ public class LogInUser {
 	}
 	
 	
-	
-	
+
+
 	@RequestMapping(value = "/login")
 	public String Login(Model model, HttpServletRequest req) {
 
@@ -294,6 +294,15 @@ public class LogInUser {
 		return "error";
 	}
 	
+	@RequestMapping(value = "/apropos")
+	public String A (Model model, HttpServletRequest req) {
+
+		
+		
+
+		return "apropos";
+	}
+	
 	 private String getPrincipal(){
 	        String userName = null;
 	        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -306,6 +315,7 @@ public class LogInUser {
 	        return userName;
 	    }
 	
-	
+		
+		
 
 }
