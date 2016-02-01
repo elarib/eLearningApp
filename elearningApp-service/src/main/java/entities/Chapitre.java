@@ -3,6 +3,7 @@ package entities;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,6 +26,7 @@ public class Chapitre implements Serializable {
 	@NotNull
 	private int ordreDuChapitre;
 	private String nom;
+	@Column(length=2000)
 	private String description;
 	@ManyToOne
 	@JoinColumn(name = "cours_id")

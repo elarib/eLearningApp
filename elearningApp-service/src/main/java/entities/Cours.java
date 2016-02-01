@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -62,8 +63,8 @@ public class Cours implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotNull
-	@Size(min = 5, max = 10)
 	private String name;
+	@Column(columnDefinition="text")
 	private String description;
 	private Date dateAjout;
 	private String prerequis;
