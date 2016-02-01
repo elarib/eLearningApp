@@ -1,6 +1,7 @@
 package dao;
 
 import dao.impl.UserDaoImpl;
+import dao.impl.UserDetailsDAOImpl;
 
 /**
  * 
@@ -33,6 +34,8 @@ public class SingletonDAO {
 	private final static CategorieDAO categorieDAO = new CategorieDAO();
 	private final static MotCleDAO motCleDAO = new MotCleDAO();
 	private final static RoleDao roleDAO = new RoleDao();
+	
+	private final static UserDetailsDAOImpl userDetailsDAO = new UserDetailsDAOImpl();
 
 	
 	
@@ -67,5 +70,9 @@ public class SingletonDAO {
 
 	public static RoleDao getRoledao() {
 		return roleDAO;
+	}
+
+	public static UserDetailsDAOImpl getUserdetailsdao() {
+		return userDetailsDAO;
 	}
 }

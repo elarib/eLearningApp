@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="eLearning is a modern and fully responsive Template by WebThemez.">
-	<meta name="author" content="webThemez.com">
-	<title>eLearning INPT</title>
-	<%@include file="tags/resourcesfiles.jsp"%>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="eLearning is a modern and fully responsive Template by WebThemez.">
+<meta name="author" content="webThemez.com">
+<title>eLearning INPT</title>
+<%@include file="tags/resourcesfiles.jsp"%>
 </head>
 <body>
 	<%@include file="tags/header.jsp"%>
@@ -20,18 +21,32 @@
 			<div class="banner-content">
 				<div id="da-slider" class="da-slider">
 					<div class="da-slide">
-						<h2>Educational Website</h2>
-						<p>Amazing free responsive website for free, enjoy!!!</p>
+						<h2>eLearning INPT</h2>
+						<p>Accompagner le développement des formations tirant
+							pleinement profit du levier numérique et accessibles au plus
+							grand nombre</p>
 						<div class="da-img"></div>
 					</div>
 					<div class="da-slide">
-						<h2>Online Education</h2>
-						<p>Bootstrap is a powerful mobile first front-end framework..</p>
+						<h2>eLearning INPT</h2>
+						<p>Inciter à placer le numérique au cœur du parcours étudiant
+							et des métiers de l'enseignement supérieur et de la recherche</p>
 						<div class="da-img"></div>
 					</div>
 					<div class="da-slide">
-						<h2>Super Success</h2>
-						<p>HTML5 is a markup language used for structuring and presenting Web.</p>
+						<h2>eLearning INPT</h2>
+						<div>
+							<p>Offrir des moyens et services mutualisés en soutien aux
+								initiatives numériques des établissements</p>
+						</div>
+						<div class="da-img"></div>
+					</div>
+					<div class="da-slide">
+						<h2>eLearning INPT</h2>
+						<div>
+							<p>Promouvoir la visibilité de l'offre française de
+								formations et ressources numériques</p>
+						</div>
 						<div class="da-img"></div>
 					</div>
 				</div>
@@ -43,14 +58,15 @@
 
 	<div id="courses">
 		<div class="container">
-			<h2>Online Courses</h2>
+			<h2>eLearning INPT</h2>
 			<div class="row">
 				<div class="col-md-4">
 					<div class="featured-box">
 						<i class="fa fa-cogs fa-2x"></i>
 						<div class="text">
-							<h3>Responsive Design</h3>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							<h3>Cours Publiques</h3>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua.
 						</div>
 					</div>
 				</div>
@@ -58,8 +74,9 @@
 					<div class="featured-box">
 						<i class="fa fa-leaf fa-2x"></i>
 						<div class="text">
-							<h3>HTML5/CSS3</h3>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							<h3>Cours Privés</h3>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua.
 						</div>
 					</div>
 				</div>
@@ -67,8 +84,9 @@
 					<div class="featured-box">
 						<i class="fa fa-tachometer fa-2x"></i>
 						<div class="text">
-							<h3>Web Designing</h3>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							<h3>Forum de Discussion</h3>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua.
 						</div>
 					</div>
 				</div>
@@ -78,8 +96,9 @@
 					<div class="featured-box">
 						<i class="fa fa-eye fa-2x"></i>
 						<div class="text">
-							<h3>Web App Dev</h3>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							<h3>Quizz en ligne</h3>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua.
 						</div>
 					</div>
 				</div>
@@ -87,8 +106,9 @@
 					<div class="featured-box">
 						<i class="fa fa-quote-right fa-2x"></i>
 						<div class="text">
-							<h3>Data Base</h3>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							<h3>Labo (A venir)</h3>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua.
 						</div>
 					</div>
 				</div>
@@ -96,8 +116,9 @@
 					<div class="featured-box">
 						<i class="fa fa-arrows fa-2x"></i>
 						<div class="text">
-							<h3>Mobile App Dev</h3>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							<h3>Réseaux Sociaux (A venir)</h3>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua.
 						</div>
 					</div>
 				</div>
@@ -109,28 +130,34 @@
 	<section class="container">
 		<div class="heading">
 			<!-- Heading -->
-			<h2>Our Students</h2>
+			<h2>La plateforme en quelques mots</h2>
 		</div>
 		<div class="row">
 			<div class="col-md-4">
-				<img src="<c:url value="/resources/img/1.jpg" />" alt="" class="img-responsive">
+				<img src="<c:url value="/resources/img/1.jpg" />" alt=""
+					class="img-responsive">
 			</div>
 			<div class="col-md-8">
-				<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. </p>
-				<blockquote class="blockquote-1">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid</p>
-					<small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-				</blockquote>
+				<p>eLearning Plateforme INPT conçu et développé par des élèves
+					ingénieurs de l'INPT, ella pour missions :</p>
+
+				<p>- Accompagner le développement des formations tirant pleinement
+					profit du levier numérique et accessibles au plus grand nombre</p>
+				<p>- Inciter à placer le numérique au cœur du parcours étudiant et
+					des métiers de l'enseignement supérieur et de la recherche</p>
+				<p>- Offrir des moyens et services mutualisés en soutien aux
+					initiatives numériques des établissements</p>
+				<p>- Promouvoir la visibilité de l'offre française de formations
+					et ressources numériques</p>
 			</div>
 		</div>
 	</section>
 	<footer id="footer">
 		<div class="container">
 			<div class="social text-center">
-				<a href="#"><i class="fa fa-twitter"></i></a>
-				<a href="#"><i class="fa fa-facebook"></i></a>
-				<a href="#"><i class="fa fa-dribbble"></i></a>
-				<a href="#"><i class="fa fa-flickr"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i
+					class="fa fa-facebook"></i></a> <a href="#"><i
+					class="fa fa-dribbble"></i></a> <a href="#"><i class="fa fa-flickr"></i></a>
 				<a href="#"><i class="fa fa-github"></i></a>
 			</div>
 
@@ -141,13 +168,11 @@
 			<div class="container">
 				<div class="row">
 
-					
+
 
 					<div class="col-md-6 panel">
 						<div class="panel-body">
-							<p class="text-right">
-								Copyright &copy; 2016. eLearning INPT
-							</p>
+							<p class="text-right">Copyright &copy; 2016. eLearning INPT</p>
 						</div>
 					</div>
 
@@ -159,7 +184,7 @@
 
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 
-	
-	
+
+
 </body>
 </html>

@@ -7,14 +7,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Registration</title>
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-
+<%@include file="tags/resourcesfiles.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 <link rel="stylesheet" type="text/css"
 	href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/css/bootstrap-datepicker.css" />
 <script
@@ -23,7 +19,7 @@
 
 </head>
 <body>
-
+	<%@include file="tags/header.jsp"%>
 
 	<div id="signupbox" style="margin-top: 50px"
 		class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
