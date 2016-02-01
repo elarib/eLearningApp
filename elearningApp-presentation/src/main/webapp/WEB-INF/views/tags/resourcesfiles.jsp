@@ -20,7 +20,7 @@
 	<script src="<c:url value="/resources/js/modernizr-latest.js" />"></script>
 	<script src="<c:url value="/resources/js/jquery.cslider.js" />"></script>
 	<script src="<c:url value="/resources/js/custom.js" />"></script>
-=======
+
 
 <link rel="favicon" href="<c:url value="/resources/img/favicon.png" />">
 <link rel="stylesheet" media="screen"
