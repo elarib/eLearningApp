@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+
 <link rel="favicon" href="<c:url value="/resources/img/favicon.png" />">
 <link rel="stylesheet" media="screen"
 	href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
@@ -20,3 +19,4 @@
 	<script src="<c:url value="/resources/js/modernizr-latest.js" />"></script>
 	<script src="<c:url value="/resources/js/jquery.cslider.js" />"></script>
 	<script src="<c:url value="/resources/js/custom.js" />"></script>
+	<script src="<c:url value="/resources/js/jquery-ui.js" />"></script>

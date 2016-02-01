@@ -8,8 +8,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css" />">
 
 <%@include file="tags/resourcesfiles.jsp"%>
 <style type="text/css">
@@ -120,6 +118,11 @@ body {
 	background: #fff;
 	min-height: 460px;
 }
+
+.panel-body .btn:not (.btn-block ) {
+	width: 120px;
+	margin-bottom: 10px;
+}
 </style>
 </head>
 <body>
@@ -155,17 +158,17 @@ body {
 					<!-- SIDEBAR MENU -->
 					<div class="profile-usermenu">
 						<ul class="nav">
-							<li class="active"><a href="#"> <i
-									class="glyphicon glyphicon-home"></i> Overview
+							<li class="active"><a href="<c:url value="/profil "/>">
+									<i class="glyphicon glyphicon-home"></i> Overview
 							</a></li>
 							<li><a href="<c:url value="/profil/edit" />"> <i
 									class="glyphicon glyphicon-user"></i> Changer votre infos
 							</a></li>
 							<li><a href="#" target="_blank"> <i
-									class="glyphicon glyphicon-ok"></i> Tasks
+									class="glyphicon glyphicon-ok"></i> Cours privés
 							</a></li>
 							<li><a href="#"> <i class="glyphicon glyphicon-flag"></i>
-									Help
+									Aide
 							</a></li>
 						</ul>
 					</div>
@@ -174,10 +177,72 @@ body {
 			</div>
 			<div class="col-md-9">
 				<div class="profile-content">
-					<p>Email : ${sessionScope.user.email }</p>
-					<p>Date de naissance : ${sessionScope.user.dateNaissance }</p>
-					<p>Date d'Inscription : ${sessionScope.user.dateInscription }</p>
+					<div class="form-horizontal" >
 
+
+						<fieldset>
+
+							<!-- Form Name -->
+
+	
+								<c:if test="${good !=null }">
+									<div class="row">
+										<div class="col-sm-4"></div>
+										<div class="col-sm-4">
+											<div class="alert alert-success">Infos Sauvegardé avec
+												success.</div>
+										</div>
+										<div class="col-sm-4"></div>
+									</div>
+								</c:if>
+								<!-- Text input-->
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="Nom">Nom</label>
+									<div class="col-md-4">
+										<input readonly id="Nom" name="nom" type="text"
+											value="${sessionScope.user.nom}"
+											class="form-control input-md"> <span
+											class="help-block"></span>
+									</div>
+								</div>
+
+								<!-- Text input-->
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="prenom">Prenom</label>
+									<div class="col-md-4">
+										<input readonly id="prenom" name="prenom" type="text"
+											value="${sessionScope.user.prenom}"
+											class="form-control input-md"> <span
+											class="help-block"></span>
+									</div>
+								</div>
+
+								
+								<!-- Text input-->
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="date">Date
+										de Naissance</label>
+									<div class="col-md-4">
+										<input  readonly id="date" name="date" type="text"
+											value="${sessionScope.user.dateNaissance}"
+											class="form-control input-md"> <span
+											class="help-block"></span>
+									</div>
+
+								</div>
+
+								<!-- Button -->
+								<div class="form-group">
+									<div class="form-group"">
+										<center>
+											<a href="<c:url value="/profil/edit" />" class="btn btn-primary">Modifier vos infos</a>
+										</center>
+									</div>
+								</div>
+								
+						</fieldset>
+					
+</div>
 				</div>
 			</div>
 		</div>
