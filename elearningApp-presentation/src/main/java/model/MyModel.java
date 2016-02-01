@@ -12,10 +12,11 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class MyModel {
 
 	@NotNull
-	@Size(min = 5, max = 10)
+	@NotEmpty
 	private String name;
 	@NotNull
 	@NotEmpty
+	@Size(min = 100)
 	private String description;
 	@NotNull
 	@NotEmpty

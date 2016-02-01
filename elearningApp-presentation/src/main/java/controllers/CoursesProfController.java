@@ -195,7 +195,7 @@ public class CoursesProfController {
 		List<Cours> coursProf;
 		coursProf = coursDAO.findByProf((User) req.getSession().getAttribute("user"));
 		for (Cours cours : coursProf) {
-			cours.setDescription(cours.getDescription().substring(0, 2).concat("..."));
+			cours.setDescription(cours.getDescription().substring(0, 100).concat("..."));
 		}
 
 		model.addAttribute("tousLesCours", coursProf);

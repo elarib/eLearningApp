@@ -18,20 +18,28 @@
 	href="/elearningApp-presentation/resources/vendor/magnific-popup/magnific-popup.css">
 
 <!-- Theme CSS -->
-<link rel="stylesheet" href="/elearningApp-presentation/resources/css/theme.css">
-<link rel="stylesheet" href="/elearningApp-presentation/resources/css/theme-elements.css">
-<link rel="stylesheet" href="/elearningApp-presentation/resources/css/theme-blog.css">
-<link rel="stylesheet" href="/elearningApp-presentation/resources/css/theme-shop.css">
-<link rel="stylesheet" href="/elearningApp-presentation/resources/css/theme-animate.css">
+<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/theme.css">
+<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/theme-elements.css">
+<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/theme-blog.css">
+<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/theme-shop.css">
+<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/theme-animate.css">
 
 <!-- Skin CSS -->
-<link rel="stylesheet" href="/elearningApp-presentation/resources/css/skins/default.css">
+<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/skins/default.css">
 
 <!-- Theme Custom CSS -->
-<link rel="stylesheet" href="/elearningApp-presentation/resources/css/custom.css">
+<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/custom.css">
 
 <!-- Head Libs -->
-<script src="/elearningApp-presentation/resources/vendor/modernizr/modernizr.js"></script>
+<script
+	src="/elearningApp-presentation/resources/vendor/modernizr/modernizr.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script
@@ -40,9 +48,12 @@
 <body>
 
 	<ul class="breadcrumb">
-		<li class="active"><a href="/elearningApp-presentation/prof/cours/index">Home</a></li>
+		<li class="active"><a
+			href="/elearningApp-presentation/prof/cours/index">Home</a></li>
 		<li class="active"><a href="#">Profil</a></li>
-		<li class="active"><a href="/elearningApp-presentation/prof/cours/voirTousLesCours">Gérer les cours</a></li>
+		<li class="active"><a
+			href="/elearningApp-presentation/prof/cours/voirTousLesCours">Gérer
+				les cours</a></li>
 	</ul>
 
 	<div class="container">
@@ -57,14 +68,6 @@
 						</div>
 						<div class="col-md-10 center">
 							<h2 class="mb-none">${cours.name}</h2>
-						</div>
-						<div class="portfolio-nav col-md-1">
-							<a href="portfolio-single-project.html"
-								class="portfolio-nav-prev" data-tooltip
-								data-original-title="Previous"><i class="fa fa-chevron-left"></i></a>
-							<a href="portfolio-single-project.html"
-								class="portfolio-nav-next" data-tooltip
-								data-original-title="Next"><i class="fa fa-chevron-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -130,11 +133,12 @@
 											<strong>${chapitre.nom}</strong>
 										</h4>
 										<p>${chapitre.description }</p>
-										<f:form method="get" action="/elearningApp-presentation/apprenant/contenuChapitre">
+										<f:form method="get"
+											action="/elearningApp-presentation/apprenant/contenuChapitre">
 											<input type=hidden id="thisField" name="chapitre"
 												value="${chapitre.id }" />
 											<td><button type="submit" class="btn btn-sm btn-primary">
-											voir le contenu</button></td>
+													voir le contenu</button></td>
 										</f:form>
 									</div>
 								</div>

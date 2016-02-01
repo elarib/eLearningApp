@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	href="/elearningApp-presentation/resources/vendor/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/elearningApp-presentation/resources/vendor/font-awesome/css/font-awesome.css" />
 <link rel="stylesheet"
@@ -18,68 +18,74 @@
 	href="/elearningApp-presentation/resources/vendor/magnific-popup/magnific-popup.css">
 
 <!-- Theme CSS -->
-<link rel="stylesheet" href="/elearningApp-presentation/resources/css/theme.css">
-<link rel="stylesheet" href="/elearningApp-presentation/resources/css/theme-elements.css">
-<link rel="stylesheet" href="/elearningApp-presentation/resources/css/theme-blog.css">
-<link rel="stylesheet" href="/elearningApp-presentation/resources/css/theme-shop.css">
-<link rel="stylesheet" href="/elearningApp-presentation/resources/css/theme-animate.css">
+<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/theme.css">
+<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/theme-elements.css">
+<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/theme-blog.css">
+<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/theme-shop.css">
+<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/theme-animate.css">
 
 <!-- Skin CSS -->
-<link rel="stylesheet" href="/elearningApp-presentation/resources/css/skins/default.css">
+<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/skins/default.css">
 
 <!-- Theme Custom CSS -->
-<link rel="stylesheet" href="/elearningApp-presentation/resources/css/custom.css">
+<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/custom.css">
+<link rel="stylesheet"
+	href="/elearningApp-presentation/resources/css/style.css">
 
 <!-- Head Libs -->
-<script src="/elearningApp-presentation/resources/vendor/modernizr/modernizr.js"></script>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	src="/elearningApp-presentation/resources/vendor/modernizr/modernizr.js"></script>
 <script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	src="/elearningApp-presentation/resources/vendor/jquery/jquery.js"></script>
+<script
+	src="/elearningApp-presentation/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 
 	<ul class="breadcrumb">
-		<li class="active"><a href="/elearningApp-presentation/prof/cours/index">Home</a></li>
+		<li class="active"><a
+			href="/elearningApp-presentation/prof/cours/index">Home</a></li>
 		<li class="active"><a href="#">Profil</a></li>
-		<li class="active"><a href="/elearningApp-presentation/prof/cours/voirTousLesCours">Gérer les cours</a></li>
+		<li class="active"><a
+			href="/elearningApp-presentation/prof/cours/voirTousLesCours">Gérer
+				les cours</a></li>
 	</ul>
 
-	<div class="container">
+	<div class="container ">
 
-		<div class="row">
+		<div class="row form-style1 ">
 			<div class="col-md-12">
 				<div class="portfolio-title">
-					<div class="row">
+					<div class="row form-inside">
 						<div class="portfolio-nav-all col-md-1">
-							<a href="portfolio-single-project.html" data-tooltip
-								data-original-title="Back to list"><i class="fa fa-th"></i></a>
+							<a href="/elearningApp-presentation/prof/cours/voirTousLesCours"
+								data-tooltip data-original-title="Back to list"><i
+								class="fa fa-th"></i></a>
 						</div>
-						<div class="col-md-10 center">
+						<div class="col-md-9 center ">
 							<h2 class="mb-none">${cours.name}</h2>
 						</div>
-						<div class="portfolio-nav col-md-1">
-							<a href="portfolio-single-project.html"
-								class="portfolio-nav-prev" data-tooltip
-								data-original-title="Previous"><i class="fa fa-chevron-left"></i></a>
-							<a href="portfolio-single-project.html"
-								class="portfolio-nav-next" data-tooltip
-								data-original-title="Next"><i class="fa fa-chevron-right"></i></a>
+						<div class="col-md-2">
+							<i class="fa fa-calendar" style="color: blue;"></i> ${cours.dateAjout}
 						</div>
 					</div>
 				</div>
-
-				<hr class="tall">
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row form-style2 form-inside">
 			<div class="col-md-12">
 				<div class="portfolio-info">
 					<div class="row">
 						<div class="col-md-12 center">
 							<ul>
-								<li><i class="fa fa-calendar"></i> ${cours.dateAjout}</li>
 								<li><i class="fa fa-tags"></i> <a href="#">${motCle1}</a>,
 									<a href="#">${motCle2}</a></li>
 							</ul>
@@ -90,36 +96,38 @@
 					<strong>Description</strong>
 				</h4>
 				<p class="mt-xlg">${cours.description}</p>
-				<ul class="portfolio-details">
-					<li>
-						<h4 class="heading-primary">
-							<strong>Prerequis:</strong>
-						</h4>
-						<ul class="list list-inline list-icons">
-							<li>${cours.prerequis}</li>
-						</ul>
-					</li>
-					<li>
-						<h4 class="heading-primary">
-							<strong>Objectifs:</strong>
-						</h4>
-						<p>${cours.prerequis}</p>
-					</li>
-				</ul>
+				<div class="row">
+					<ul class="portfolio-details">
 
+						<li class="col-lg-6">
+							<h4 class="heading-primary">
+								<strong>Prerequis:</strong>
+							</h4>
+							<ul class="list list-inline list-icons">
+								<li>${cours.prerequis}</li>
+							</ul>
+						</li>
+						<li class="col-log-6">
+							<h4 class="heading-primary">
+								<strong>Objectifs:</strong>
+							</h4>
+							<ul class="list list-inline list-icons">
+								<li>${cours.objectifs}</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-md-12">
 
-				<hr class="tall">
-
-				<h4 class="mb-md text-uppercase">
-					Les <strong>chapitres</strong>
+				<h4 class="mb-md text-uppercase" style="margin-left:3%;">
+					<strong>Les chapitres</strong>
 				</h4>
 
-				<div class="row">
+				<div class="row form-style form-inside">
 
 					<ul class="portfolio-list">
 						<c:forEach var="chapitre" items="${chapitresCours}">
@@ -130,11 +138,12 @@
 											<strong>${chapitre.nom}</strong>
 										</h4>
 										<p>${chapitre.description }</p>
-										<f:form method="get" action="/elearningApp-presentation/prof/cours/chapitres/contenuChapitre">
+										<f:form method="get"
+											action="/elearningApp-presentation/prof/cours/chapitres/contenuChapitre">
 											<input type=hidden id="thisField" name="chapitre"
 												value="${chapitre.id }" />
 											<td><button type="submit" class="btn btn-sm btn-primary">
-											voir le contenu</button></td>
+													voir le contenu</button></td>
 										</f:form>
 									</div>
 								</div>

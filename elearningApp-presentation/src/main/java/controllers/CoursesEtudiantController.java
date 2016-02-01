@@ -95,8 +95,15 @@ public class CoursesEtudiantController {
 
 	@RequestMapping(value = "/voirCoursPubliques")
 	public String tousLesCoursPubliques(Model model, HttpServletRequest req) {
+		tousLesCours = (ArrayList<Cours>) coursDAO.findAll();
+		List<Cours> publicCourses = new ArrayList<Cours>();
+		for (Cours cours : tousLesCours) {
+			if (cours.getStatus() == StatusCours.PUBLIQUE)
+				cours.setDescription(cours.getDescription().substring(0, 100).concat("..."));
+				publicCourses.add(cours);
+		}
 
-		model.addAttribute("tousLesCoursPubliques", tousLesCoursPubliques);
+		model.addAttribute("tousLesCoursPubliques", publicCourses);
 		return "apprenant/allPublicCourses";
 	}
 
@@ -106,6 +113,9 @@ public class CoursesEtudiantController {
 		User apprenant = (User) req.getSession().getAttribute("user");
 
 		coursAutorises = (List<Cours>) apprenant.getCoursAutorises();
+		for (Cours cours : coursAutorises) {
+			cours.setDescription(cours.getDescription().substring(0, 100).concat("..."));
+		}
 
 		model.addAttribute("tousLesCoursAutorises", coursAutorises);
 		return "apprenant/allAutorizedCoursesApprenant";
