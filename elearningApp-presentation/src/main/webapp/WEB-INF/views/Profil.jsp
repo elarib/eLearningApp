@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Profil de ${sessionScope.user.prenom}</title>
 
 <%@include file="tags/resourcesfiles.jsp"%>
 <style type="text/css">

@@ -59,7 +59,7 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         } else if (isAdmin) {
             return "/profil";
         } else {
-            throw new IllegalStateException();
+        	 return "/profil";
         }
     }
  

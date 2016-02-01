@@ -24,13 +24,38 @@
 				<li><a href="<c:url value="/apropos" />">A propos</a></li>
 
 
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown">Cours <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="sidebar-right.html">Cours Publiques</a></li>
-						<li><a href="#">Cours Privés</a></li>
-					</ul></li>
+				<sec:authorize access="isAnonymous()">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Cours <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a
+								href="<c:url value="/apprenant/voirCoursPubliques" />">Cours
+									Publiques</a></li>
+						
+						</ul></li>
+				</sec:authorize>
+				
+				
+				<sec:authorize access="hasAnyRole('ROLE_PROF')">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Cours <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a
+								href="<c:url value="/prof/cours/AccesPageajoutCours" />">Ajouter Cours</a></li>
+							<li><a href="<c:url value="/prof/cours/voirTousLesCours" />">Voir Cours</a></li>
+						</ul></li>
+				</sec:authorize>
 
+				<sec:authorize access="hasAnyRole('ROLE_APPRENANT')">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Cours <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a
+								href="<c:url value="/apprenant/voirCoursPubliques" />">Cours
+									Publiques</a></li>
+							<li><a href="<c:url value="/apprenant/voirTousLesCoursAutorises" />">Cours Privés</a></li>
+						</ul></li>
+				</sec:authorize>
 
 
 
@@ -86,17 +111,17 @@
 							</li>
 						</ul></li>
 				</sec:authorize>
-				
-				
-				
+
+
+
 				<sec:authorize access="isAnonymous()">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown">Mon Espace <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="<c:url value="login" />">Login</a></li>
-						<li><a href="<c:url value="signup" />">S'inscrire</a></li>
-					</ul></li>
-						</sec:authorize>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Mon Espace <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="<c:url value="login" />">Login</a></li>
+							<li><a href="<c:url value="signup" />">S'inscrire</a></li>
+						</ul></li>
+				</sec:authorize>
 			</ul>
 
 

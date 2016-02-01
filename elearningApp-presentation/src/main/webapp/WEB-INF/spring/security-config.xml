@@ -26,12 +26,12 @@
 
 	
 		<intercept-url pattern="/profil/edit"
-			access="hasAnyRole('ROLE_ADMIN','ROLE_APPRENANT')" />
+			access="hasAnyRole('ROLE_ADMIN','ROLE_APPRENANT','ROLE_PROF')" />
 		<intercept-url pattern="/profil**"
-			access="hasAnyRole('ROLE_ADMIN','ROLE_APPRENANT')" />
+			access="hasAnyRole('ROLE_ADMIN','ROLE_APPRENANT','ROLE_PROF')" />
 		<intercept-url pattern="/403" access="permitAll" />
 		<intercept-url pattern="/**"
-			access="hasAnyRole('ROLE_ADMIN','ROLE_APPRENANT')" />
+			access="hasAnyRole('ROLE_ADMIN','ROLE_APPRENANT','ROLE_PROF')" />
 
 		<!-- Cours -->
 		
